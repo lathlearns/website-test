@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompts - Ancient Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Patua+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="assets/img/logo-mark.png">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Ancient Access"></a>
+  <nav class="site-nav">
+    <a href="index.html">Home</a><a href="prompts.html" aria-current="page">Prompts</a><a href="characters.html">Characters</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Prompts</h1>
+  <p>The engine room. A preset that simulates a psyche, and a summariser that keeps it remembering.</p>
+</section>
+
+<main class="wrap">
+  <h2 style="text-align:center;margin:8px 0 6px">One engine, two parts</h2>
+  <p class="lede">My characters are written and tested against the preset — it's the load-bearing piece. The summariser keeps long chats coherent alongside it. Grab both, read the notes, then pick your character.</p>
+  <div class="duo" id="list"></div>
+</main>
+
+<footer class="site-footer">Ancient Access</footer>
+
+<script src="assets/site.js"></script>
+<script>
+// Everything shown here comes from prompts.json.
+let PROMPTS = [];
+const list = document.getElementById("list");
+
+fetch("prompts.json").then(r => r.json()).then(items => {
+  PROMPTS = items;
+  list.innerHTML = items.map((p, i) => `
+    <section class="panel">
+      <h2>${esc(p.name)}</h2>
+      <div class="ver">${esc(p.version || "")}</div>
+      <p class="summary">${inline(p.summary)}</p>
+      <div class="actions">
+        ${(p.downloads || []).map((d, j) => `<a class="btn ${j ? "" : "primary"}" href="${esc(d.file)}" target="_blank" rel="noopener">${esc(d.label)}</a>`).join("")}
+        <button class="btn" data-i="${i}">Read the notes</button>
+      </div>
+    </section>`).join("");
+}).catch(err => {
+  console.error(err);
+  list.innerHTML = `<p class="empty">Couldn't load the prompt list.</p>`;
+});
+
+list.addEventListener("click", e => {
+  const b = e.target.closest("button[data-i]"); if (!b) return;
+  const p = PROMPTS[b.dataset.i];
+  detail({ name: p.name, tagline: p.version, tabs: p.sections, downloads: p.downloads });
+});
+</script>
+</body>
+</html>

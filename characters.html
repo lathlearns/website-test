@@ -6,114 +6,25 @@
 <title>Characters - Ancient Access</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0b0a08;
-    --bg-2: #13110d;
-    --panel: #18150f;
-    --line: #2c271d;
-    --text: #e6dfd0;
-    --muted: #a39a87;
-    --gold: #c9a96e;
-    --gold-dim: #8a744b;
-    --serif: "Bitter", Georgia, serif;
-    --sans: "Open Sans", system-ui, sans-serif;
-    --nav: "Montserrat", system-ui, sans-serif;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); }
-  body { min-height: 100vh; }
-  a { color: var(--gold); }
-
-  /* Header */
-  header { background: var(--bg-2); border-bottom: 1px solid var(--line); }
-  .brand { text-align: center; padding: 18px 16px 10px; }
-  .brand .mark { font-family: var(--serif); letter-spacing: .18em; font-size: 13px; color: var(--gold); }
-  nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 30px; padding: 8px 16px 0; border-top: 1px solid var(--line); }
-  nav a { font-family: var(--nav); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--text); text-decoration: none; padding: 8px 0 9px; border-bottom: 2px solid transparent; }
-  nav a.on { border-bottom-color: var(--gold); }
-
-  /* Compact hero */
-  .hero { text-align: center; padding: 34px 16px 22px; background: #000; }
-  .hero h1 { font-family: var(--serif); font-weight: 700; letter-spacing: .08em; font-size: clamp(28px, 4vw, 40px); margin: 0 0 8px; }
-  .hero p { font-style: italic; margin: 0; color: var(--text); }
-
-  main { max-width: 1120px; margin: 0 auto; padding: 18px 16px 48px; }
-
-  /* Read-first notice, collapsed by default */
-  details.notice { border: 1px solid var(--line); background: var(--bg-2); margin-bottom: 18px; }
-  details.notice summary { cursor: pointer; padding: 12px 16px; font-family: var(--serif); letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: var(--gold); list-style: none; }
-  details.notice summary::-webkit-details-marker { display: none; }
-  details.notice summary::after { content: "+"; float: right; }
-  details.notice[open] summary::after { content: "–"; }
-  details.notice div { padding: 0 16px 14px; font-style: italic; color: var(--muted); line-height: 1.7; font-size: 14px; }
-
-  /* Toolbar */
-  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 18px; }
-  .search { flex: 1 1 220px; max-width: 300px; background: var(--bg-2); border: 1px solid var(--line); color: var(--text); padding: 9px 12px; font: inherit; font-size: 14px; }
-  .search:focus { outline: 1px solid var(--gold-dim); }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip { background: transparent; border: 1px solid var(--line); color: var(--muted); font-family: var(--nav); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; padding: 7px 11px; cursor: pointer; }
-  .chip.on { border-color: var(--gold); color: var(--gold); }
-
-  /* Grid */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
-  .tile { background: var(--panel); border: 1px solid var(--line); cursor: pointer; text-align: left; padding: 0; color: inherit; font: inherit; display: flex; flex-direction: column; transition: border-color .15s, transform .15s; }
-  .tile:hover, .tile:focus-visible { border-color: var(--gold-dim); transform: translateY(-2px); outline: none; }
-  .art { aspect-ratio: 3 / 4; width: 100%; background-size: cover; background-position: center; display: grid; place-items: center; font-family: var(--serif); font-size: 64px; color: rgba(201,169,110,.35); }
-  .tile .body { padding: 12px 12px 14px; }
-  .tile h3 { font-family: var(--serif); letter-spacing: .1em; text-transform: uppercase; font-size: 16px; margin: 0 0 6px; }
-  .tile p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted); font-style: italic; }
-  .tile .era { font-family: var(--nav); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dim); margin-top: 8px; }
-  .empty { color: var(--muted); font-style: italic; padding: 30px 0; text-align: center; grid-column: 1 / -1; }
-
-  /* Detail modal */
-  dialog { border: 1px solid var(--line); background: var(--bg-2); color: var(--text); padding: 0; width: min(920px, calc(100vw - 32px)); max-height: calc(100vh - 40px); }
-  dialog::backdrop { background: rgba(0,0,0,.78); }
-  .modal { display: grid; grid-template-columns: 300px 1fr; max-height: calc(100vh - 42px); }
-  .modal .art { aspect-ratio: auto; height: 100%; min-height: 400px; font-size: 96px; }
-  .content { display: flex; flex-direction: column; min-height: 0; }
-  .content header { background: none; border: 0; padding: 22px 24px 0; position: relative; }
-  .content h2 { font-family: var(--serif); letter-spacing: .1em; text-transform: uppercase; margin: 0 0 6px; font-size: 26px; }
-  .content .tagline { font-weight: 600; margin: 0 0 14px; }
-  .close { position: absolute; top: 14px; right: 16px; background: none; border: 0; color: var(--muted); font-size: 26px; cursor: pointer; line-height: 1; }
-  .tabs { display: flex; gap: 22px; border-bottom: 1px solid var(--line); padding: 0 24px; }
-  .tabs button { background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); padding: 10px 0; cursor: pointer; font-family: var(--nav); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
-  .tabs button.on { color: var(--text); border-bottom-color: var(--gold); }
-  .pane { padding: 18px 24px; overflow-y: auto; line-height: 1.75; font-size: 14.5px; flex: 1; }
-  .pane p { margin: 0 0 12px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 24px 4px; }
-  .tags span { font-family: var(--nav); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--line); padding: 4px 8px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 14px 24px 20px; border-top: 1px solid var(--line); }
-  .btn { font-family: var(--serif); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; padding: 10px 16px; text-decoration: none; border: 1px solid var(--gold); }
-  .btn.primary { background: var(--gold); color: #1a1408; }
-  .btn.ghost { color: var(--gold); }
-
-  @media (max-width: 720px) {
-    .modal { grid-template-columns: 1fr; overflow-y: auto; }
-    .modal .art { min-height: 0; height: 220px; }
-    .pane { overflow: visible; }
-    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    nav { gap: 2px 18px; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Patua+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="assets/img/logo-mark.png">
 </head>
 <body>
-<header>
-  <div class="brand"><div class="mark">ANCIENT ACCESS</div></div>
-  <nav>
-    <a href="#">Home</a><a href="#">Prompts</a><a href="#" class="on">Characters</a><a href="#">About</a><a href="#">Blog</a><a href="#">Contact</a>
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Ancient Access"></a>
+  <nav class="site-nav">
+    <a href="index.html">Home</a><a href="prompts.html">Prompts</a><a href="characters.html" aria-current="page">Characters</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
-  <h1>CHARACTERS</h1>
+  <h1>Characters</h1>
   <p>Mythic period pieces, modern psychological dramas — every card an engineered experience.</p>
 </section>
 
-<main>
-  <details class="notice">
+<main class="wrap">
+  <details class="fold quiet">
     <summary>Read before you download</summary>
     <div>
       <p>Every character below is hyperfocused on one experience — the blurb tells you exactly what you're signing up for, so trust it. Most are written and tested against my preset; some ship with a customised version baked into their prompt override. The Author's Notes on each card tell you which setup applies.</p>
@@ -129,65 +40,18 @@
   <div class="grid" id="grid"></div>
 </main>
 
-<dialog id="dlg" aria-labelledby="d-name">
-  <div class="modal">
-    <div class="art" id="d-art"></div>
-    <div class="content">
-      <header>
-        <button class="close" id="d-close" aria-label="Close">×</button>
-        <h2 id="d-name"></h2>
-        <p class="tagline" id="d-tag"></p>
-      </header>
-      <div class="tags" id="d-tags"></div>
-      <div class="tabs" id="d-tabs" role="tablist"></div>
-      <div class="pane" id="d-pane"></div>
-      <div class="actions" id="d-actions"></div>
-    </div>
-  </div>
-</dialog>
+<footer class="site-footer">Ancient Access</footer>
 
+<script src="assets/site.js"></script>
 <script>
-// Characters live in characters.json. An entry with a "card" PNG gets its
-// name, tags and art from the card itself; anything written in the entry
-// adds to (tags) or overrides (everything else) what the card says.
+// The catalogue lives in characters.json. An entry with a "card" PNG takes its
+// name and tags from the card; anything written in the entry adds to the tags
+// or overrides the rest.
 let CHARACTERS = [];
-let TAGS = [];
-
+let activeTag = "all";
 const grid = document.getElementById("grid");
 const q = document.getElementById("q");
 const chipsEl = document.getElementById("chips");
-let activeTag = "all";
-
-const esc = s => String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
-
-// Tags match regardless of capitals or stray spaces: "romance", "Romance " and
-// "ROMANCE" are one tag, shown with a capital first letter.
-const tagKey = t => String(t).trim().replace(/\s+/g, " ").toLowerCase();
-const tagLabel = k => k.charAt(0).toUpperCase() + k.slice(1);
-
-// Read the character data SillyTavern embeds in a card PNG ("ccv3" or "chara"
-// text chunk holding base64 JSON). Returns null if there is none.
-async function readCard(url) {
-  const buf = new Uint8Array(await (await fetch(url)).arrayBuffer());
-  const view = new DataView(buf.buffer);
-  const latin1 = new TextDecoder("latin1");
-  const found = {};
-  for (let pos = 8; pos + 8 <= buf.length;) {
-    const len = view.getUint32(pos);
-    const type = latin1.decode(buf.subarray(pos + 4, pos + 8));
-    const data = buf.subarray(pos + 8, pos + 8 + len);
-    if (type === "tEXt") {
-      const nul = data.indexOf(0);
-      found[latin1.decode(data.subarray(0, nul))] = latin1.decode(data.subarray(nul + 1));
-    }
-    if (type === "IEND") break;
-    pos += 12 + len;
-  }
-  const raw = found.ccv3 || found.chara;
-  if (!raw) return null;
-  const json = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(raw), ch => ch.charCodeAt(0))));
-  return json.data || json;
-}
 
 async function load() {
   const entries = await (await fetch("characters.json")).json();
@@ -196,25 +60,32 @@ async function load() {
     if (e.card) {
       try { card = await readCard(e.card); } catch (err) { console.warn("Could not read card", e.card, err); }
     }
-    const keys = [...new Set([...(card?.tags || []), ...(e.tags || [])].map(tagKey).filter(Boolean))];
-    const downloads = [];
-    if (e.card) downloads.push({ label: "Download card", file: e.card });
-    for (const x of e.extras || []) downloads.push(x);
+    // Keep the first spelling seen for each tag, keyed case-insensitively.
+    const tags = new Map();
+    for (const t of [...(card?.tags || []), ...(e.tags || [])]) {
+      const k = tagKey(t);
+      if (k && !tags.has(k)) tags.set(k, tagLabel(t));
+    }
+    const sections = e.sections || [];
     return {
       name: e.name || card?.name || "Untitled",
       tagline: e.tagline || "",
-      era: e.era || "",
       art: e.art || e.card || "",
-      tags: keys,
-      warning: e.warning || "",
-      story: e.story || [],
-      vibe: e.vibe || [],
-      downloads
+      tags,
+      tabs: [
+        ...(e.warning ? [{ title: e.warningLabel || "Content warning", text: [e.warning], warn: true }] : []),
+        ...sections.map(s => ({ title: s.title, text: s.text }))
+      ],
+      downloads: [...(e.downloads || []), ...(e.card && !e.downloads ? [{ label: "Download card", file: e.card }] : [])],
+      haystack: [e.name, card?.name, e.tagline, e.warning, ...sections.flatMap(s => s.text)].join(" ").toLowerCase()
     };
   }));
-  TAGS = [...new Set(CHARACTERS.flatMap(c => c.tags))].sort();
-  chipsEl.innerHTML = ["all", ...TAGS].map(k =>
-    `<button class="chip${k === "all" ? " on" : ""}" data-tag="${esc(k)}">${esc(tagLabel(k))}</button>`).join("");
+
+  const all = new Map();
+  CHARACTERS.forEach(c => c.tags.forEach((label, k) => { if (!all.has(k)) all.set(k, label); }));
+  const keys = [...all.keys()].sort((a, b) => all.get(a).localeCompare(all.get(b)));
+  chipsEl.innerHTML = [`<button class="chip on" data-tag="all">All</button>`,
+    ...keys.map(k => `<button class="chip" data-tag="${esc(k)}">${esc(all.get(k))}</button>`)].join("");
   render();
 }
 
@@ -226,58 +97,27 @@ chipsEl.addEventListener("click", e => {
 });
 q.addEventListener("input", render);
 
-function artStyle(c) {
-  return c.art
-    ? `background-image:url('${encodeURI(c.art)}')`
-    : `background:radial-gradient(circle at 50% 35%, #2a2418, #0d0b08 75%)`;
-}
-
 function render() {
   const term = q.value.trim().toLowerCase();
   const list = CHARACTERS.filter(c =>
-    (activeTag === "all" || c.tags.includes(activeTag)) &&
-    (!term || [c.name, c.tagline, c.era, ...c.tags, ...c.story, ...c.vibe].join(" ").toLowerCase().includes(term))
-  );
+    (activeTag === "all" || c.tags.has(activeTag)) &&
+    (!term || c.haystack.includes(term) || [...c.tags.values()].some(t => t.toLowerCase().includes(term))));
   grid.innerHTML = list.length ? list.map(c => `
     <button class="tile" data-i="${CHARACTERS.indexOf(c)}">
-      <div class="art" style="${artStyle(c)}">${c.art ? "" : esc(c.name[0])}</div>
+      <div class="art" ${c.art ? `style="background-image:url('${esc(c.art)}')"` : ""}></div>
       <div class="body">
         <h3>${esc(c.name)}</h3>
         <p>${esc(c.tagline)}</p>
-        <div class="era">${esc(c.era)}</div>
+        ${c.tags.size ? `<div class="tags">${[...c.tags.values()].map(t => `<span>${esc(t)}</span>`).join("")}</div>` : ""}
       </div>
     </button>`).join("") : `<div class="empty">No characters match.</div>`;
 }
+
 grid.addEventListener("click", e => {
-  const t = e.target.closest(".tile"); if (t) open(CHARACTERS[t.dataset.i]);
+  const t = e.target.closest(".tile"); if (!t) return;
+  const c = CHARACTERS[t.dataset.i];
+  detail({ ...c, tags: [...c.tags.values()] });
 });
-
-const dlg = document.getElementById("dlg");
-document.getElementById("d-close").onclick = () => dlg.close();
-dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
-
-function open(c) {
-  const art = document.getElementById("d-art");
-  art.setAttribute("style", artStyle(c));
-  art.textContent = c.art ? "" : c.name[0];
-  document.getElementById("d-name").textContent = c.name;
-  document.getElementById("d-tag").textContent = c.tagline;
-  document.getElementById("d-tags").innerHTML = [c.era, ...c.tags.map(tagLabel)].filter(Boolean).map(t => `<span>${esc(t)}</span>`).join("");
-  const panes = { "The story": c.story, "The vibe": c.vibe, "Content warning": [c.warning] };
-  const tabs = document.getElementById("d-tabs");
-  const pane = document.getElementById("d-pane");
-  tabs.innerHTML = Object.keys(panes).map((k, i) => `<button role="tab" class="${i ? "" : "on"}">${k}</button>`).join("");
-  const show = k => { pane.innerHTML = panes[k].map(p => `<p>${esc(p)}</p>`).join(""); pane.scrollTop = 0; };
-  tabs.onclick = e => {
-    const b = e.target.closest("button"); if (!b) return;
-    tabs.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b));
-    show(b.textContent);
-  };
-  show("The story");
-  document.getElementById("d-actions").innerHTML = c.downloads
-    .map((d, i) => `<a class="btn ${i ? "ghost" : "primary"}" href="${encodeURI(d.file)}" download>${esc(d.label)}</a>`).join("");
-  dlg.showModal();
-}
 
 load().catch(err => {
   console.error(err);

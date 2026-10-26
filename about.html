@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About - Ancient Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Patua+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="assets/img/logo-mark.png">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Ancient Access"></a>
+  <nav class="site-nav">
+    <a href="index.html">Home</a><a href="prompts.html">Prompts</a><a href="characters.html">Characters</a><a href="about.html" aria-current="page">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>About</h1>
+</section>
+
+<main class="wrap narrow prose">
+  <h2>The workshop</h2>
+  <p>Ancient Access is a small workshop for SillyTavern roleplay — character cards, a main preset, and supporting tools, all built as one interlocking system.</p>
+  <p>Everything here follows the same philosophy. Each character is hyperfocused on delivering a single, specific experience: the blurb states it, the systems inside the card enforce it. Settings are researched properly — historical texture, folklore traced to its sources, psychology treated as machinery rather than decoration. The preset runs first person because interiority is the entire point. These are deliberate craft choices, and the catalogue stays small because each release is engineered and tested until it holds.</p>
+  <p>Everything is free. You are welcome to customise and repurpose parts of the prompts and character cards, however if you end up uploading the full card on a platform like Chub or JanitorAI, please include a link to this website.</p>
+  <p>There are no commissions and no donations. If you have an idea for a character or a feature, you're welcome to send it through the <a href="contact.html">contact page</a> — anything genuinely interesting may end up on the workbench.</p>
+  <p>New here? The Setup Guide covers installation and how the pieces fit together. Otherwise: download <a href="prompts.html">Prompts</a> and <a href="characters.html">Characters</a> by using the navigation menu. Go play.</p>
+
+  <h2 id="setup">Setup guide</h2>
+  <p><em>Everything below assumes SillyTavern. Other frontends may work with modification, and you're on your own there.</em></p>
+
+  <details class="fold" open>
+    <summary>1. Install the preset</summary>
+    <div>
+      <p>Download the preset JSON from <a href="prompts.html">Prompts</a>. In SillyTavern, open the AI Response Configuration panel (the sliders icon, top left), find the preset dropdown, and use the import button beside it to load the file. Select it as your active preset.</p>
+      <p>Skim the prompt list once after importing. The preset is modular — the core blocks stay on, and optional modules ([Plot Driver, NPC Dynamic Mode, Multi-char POV, Adult content]) can be toggled per chat depending on what your scene needs.</p>
+    </div>
+  </details>
+  <details class="fold">
+    <summary>2. Import a character</summary>
+    <div>
+      <p>Download the character JSON from <a href="characters.html">Characters</a>. In the Character Management panel (top right), select Import Character from File and choose the file. That's all it takes.</p>
+    </div>
+  </details>
+  <details class="fold">
+    <summary>3. Read the Author's Note / creator notes — every time</summary>
+    <div>
+      <p>This is the step people skip, and it's usually why a character misbehaves. Each card states its own requirements:</p>
+      <ul>
+        <li>Some characters run on the main preset as-is.</li>
+        <li>Some ship with a customised version of the preset baked into their prompt override. For these, the notes will tell you to disable the main preset's [system prompt / overlapping modules] so the two don't conflict.</li>
+        <li>Character-specific toggles, POV notes, and content flags live there too.</li>
+      </ul>
+      <p>The card's blurb tells you what experience you're signing up for. The notes tell you how to get it. Both are short — read both.</p>
+    </div>
+  </details>
+  <details class="fold">
+    <summary>4. Set up the summariser (optional, recommended for long chats)</summary>
+    <div>
+      <p>The summariser is distributed as plain text — copy it from PDF, which you can download from <a href="prompts.html">Prompts</a>. It's written for SillyTavern's built-in Summarize extension: open Extensions (the blocks icon), find Summarize, set it to use the main API, and paste the prompt into the prompt field, replacing the default.</p>
+      <p>Since it's plain text, it also transplants into whatever memory extension you prefer — trim and restructure at will.</p>
+    </div>
+  </details>
+  <details class="fold">
+    <summary>5. Quick Reply sets (character-specific)</summary>
+    <div>
+      <p>Some characters (Struan, Gundahar) come with a Quick Reply set that adds extra mechanics. Import it via Extensions → Quick Reply → import, then enable the set. The character's notes explain what the buttons do.</p>
+    </div>
+  </details>
+  <details class="fold">
+    <summary>If something breaks</summary>
+    <div>
+      <p>Check the Author's Notes first, then confirm the preset imported cleanly and the right modules are toggled. Still stuck? Send a message through <a href="contact.html">Contact</a> with your model/backend and a description of what happened.</p>
+    </div>
+  </details>
+</main>
+
+<footer class="site-footer">Ancient Access</footer>
+</body>
+</html>

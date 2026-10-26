@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Main Preset",
+    "version": "v2.2.3",
+    "summary": "A system prompt that treats characters as minds. Intrusive thoughts, emotional pressure, knowledge limits, literary prose — the machinery underneath every character I make.",
+    "sections": [
+      {
+        "title": "What's inside",
+        "text": [
+          "This is the load-bearing wall of the whole ecosystem — my characters are written and tested against it, and several ship with a customised version baked into their prompt override. It runs first-person POV. I know that's an unpopular choice; it's also a deliberate one, because first person is what unlocks the deep psychological interiority and prose quality this preset exists to deliver. Inside you'll find the core directives, a psychology engine (intrusive thoughts, emotional cycles, epistemic limits — characters only know what they've actually witnessed), prose and texture rules, plus optional modules like the plot driver, NPC dynamics, and multi-character POV you can toggle per chat. Import it as a SillyTavern preset, skim the module list, customise it, switch on what your scene needs."
+        ]
+      },
+      {
+        "title": "Built for",
+        "text": [
+          "Built for one-on-one or multi-char character study cards. The preset puts the model inside a single character's mind, in first person, so world sims, RPG systems, and narrator cards won't work as intended: the model will try to give the narrator a psyche. NPC and world modules exist to populate the world around that central character, not to run a game."
+        ]
+      },
+      {
+        "title": "Models",
+        "text": [
+          "Recommended models: Kimi K2.6, but also works okay on K2.5, K2.7, K3, as well as Mimo 2.6 Pro, and GLM 5.3 and 5.3 Flash"
+        ]
+      }
+    ],
+    "downloads": [
+      {
+        "label": "Download",
+        "file": "https://github.com/ancientaccess/Ancient-Access/blob/main/%F0%9F%90%8D%20Ancient%20Access%20%F0%9F%90%8D%20V2.2.3(3).json"
+      }
+    ]
+  },
+  {
+    "name": "Recall",
+    "version": "v1.7.1",
+    "summary": "Long roleplays rot from the middle. Recall keeps one living record of your entire story, revised as it grows, always in front of the model.",
+    "sections": [
+      {
+        "title": "What it does",
+        "text": [
+          "Recall is a SillyTavern summary extension, vibecoded by Noeulbit ([u/QuietPalimpsest](https://www.reddit.com/user/QuietPalimpsest/)) and me to replace the clunky built-in Summarize. It keeps a single summary of the whole chat. When context starts filling up, you press a button, and the summary is revised in place: older events get compressed, new developments get added, and anything that matters stays. Then the summarised messages are hidden, and your chat carries on with the full story behind it."
+        ]
+      },
+      {
+        "title": "Why one summary",
+        "text": [
+          "Many memory tools split a chat into pieces. Recursive summarisers compress old material into layers of summaries of summaries, and scene-based tools file each scene as its own lorebook entry that surfaces when a keyword appears. Both work well, especially for sprawling campaigns. Recall makes a different trade. Every revision rereads the existing summary in full and edits it like a document, so nothing gets compressed blind, and the whole relationship sits in one place as a continuous arc. The prompt has strict rules about what survives: Core Memories are never merged or deleted, plot beats keep their cause and effect, and an unresolved thread can only leave once it's actually resolved."
+        ]
+      },
+      {
+        "title": "With the AA preset",
+        "text": [
+          "This is where it gets interesting. The summary isn't just memory, it's material the preset actively uses.",
+          "**Core Memories feed intrusive thoughts.** A flash at an emotional spike can reach back a thousand messages to a relationship cornerstone and surface it as fear, longing or insecurity, in the character's own way of thinking.",
+          "**Intrusive thoughts feed back into the story.** The summariser records repeating flashes as psychological patterns, tracking what they reveal and what they might become. A recurring image can grow into a conscious goal or a confrontation the character is building toward.",
+          "**Plot threads feed the Plot Driver.** When a scene stalls, it checks the summary's unresolved threads first, so complications come from your story instead of out of nowhere.",
+          "**Secrets stay secret.** The summary tracks who knows what, which keeps characters' knowledge limits intact across long chats.",
+          "**The vibe survives too.** Pet names, inside jokes and recurring motifs are recorded with what they mean, alongside the emotional arc and character states. So after a summary, the character still remembers who they've become and how the two of you talk to each other, and the relationship keeps its texture instead of resetting to polite strangers with a shared history."
+        ]
+      },
+      {
+        "title": "Make it yours",
+        "text": [
+          "The summary prompt is built from toggleable blocks you can edit, reorder or add to. Running a war campaign? Add a block that keeps a separate campaign ledger prompt at the end of every summary. Want to track how a police investigation is going? Write the block. Any character can also take its own copy of the prompt, so one card can track things the others don't care about."
+        ]
+      },
+      {
+        "title": "Without my preset",
+        "text": [
+          "Recall doesn't place the summary into your prompt by itself. It provides a `{{recall}}` macro, and your setup decides where it goes. If your preset doesn't have a summary block, add a new prompt in your prompt manager containing `[Summary: {{recall}}]` and position it where you'd like it. The prompt that ships with Recall is built around psychological continuity, so it works with any preset, but the synergies above are specific to Ancient Access."
+        ]
+      },
+      {
+        "title": "Before you install",
+        "text": [
+          "- Requires SillyTavern 1.18.0 or newer, Chat Completion only.",
+          "- Disable the built-in Summarize first. Running both risks a duplicated summary in context.",
+          "- Summarising is manual by design. Recall nudges you when context is filling up, and you pick a good stopping point.",
+          "- The summary sits permanently in context, so it costs tokens on every message. That's the price of the model always seeing the whole story.",
+          "- Once in a while you may want to manually prune old Core Memories that are no longer important to you, as the model is instructed to never delete any.",
+          "- Already summarised a chat with the built-in? Recall picks it up and revises it instead of starting over.",
+          "*Built for our own setup and shared as-is. Support is best-effort.*"
+        ]
+      }
+    ],
+    "downloads": [
+      {
+        "label": "Download",
+        "file": "https://github.com/lathlearns/recall"
+      }
+    ]
+  }
+]

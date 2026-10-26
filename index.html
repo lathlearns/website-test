@@ -1,5 +1,53 @@
 <!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=characters.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ancient Access</title>
-<a href="characters.html">Characters</a>
+<meta name="description" content="Deep psychological realism for LLM roleplay. Built like systems. Written like literature.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Patua+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="assets/img/logo-mark.png">
+<style>
+  .home-hero { padding: 72px 16px 64px; }
+  .welcome { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 48px; align-items: center; max-width: 900px; margin: 0 auto; }
+  .welcome h2 { font-size: 26px; margin: 0 0 18px; }
+  .welcome p { font-style: italic; }
+  .welcome .snake { background: #000; padding: 24px; text-align: center; }
+  @media (max-width: 720px) {
+    .welcome { grid-template-columns: 1fr; gap: 24px; }
+    .welcome .snake { max-width: 220px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Ancient Access"></a>
+  <nav class="site-nav">
+    <a href="index.html" aria-current="page">Home</a><a href="prompts.html">Prompts</a><a href="characters.html">Characters</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero home-hero">
+  <h1>Ancient Access</h1>
+  <p>Deep psychological realism for LLM roleplay. Built like systems. Written like literature.</p>
+  <a class="btn primary" href="characters.html">See characters</a>
+</section>
+
+<main class="wrap" style="padding-top:56px">
+  <div class="welcome">
+    <div>
+      <h2>Welcome to<br>Ancient Access</h2>
+      <p>Ancient Access is a small workshop for LLM roleplay: character cards, a preset that simulates a psyche, and tools that keep long stories coherent. Everything here is built around one idea — each character delivers a single, specific experience, engineered end to end.</p>
+      <p>The characters range from mythic period pieces grounded in real historical research to modern psychological dramas. Underneath them all runs the same engine: emotional realism, literary prose, and systems that hold together across hundreds of messages.</p>
+      <a class="btn" href="about.html#setup">Setup guide</a>
+    </div>
+    <div class="snake"><img src="assets/img/snake.png" alt=""></div>
+  </div>
+</main>
+
+<footer class="site-footer">Ancient Access</footer>
+</body>
+</html>

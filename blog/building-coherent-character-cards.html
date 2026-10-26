@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building Coherent Character Cards - Ancient Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Patua+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/img/logo-mark.png">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><img src="../assets/img/logo.png" alt="Ancient Access"></a>
+  <nav class="site-nav">
+    <a href="../index.html">Home</a><a href="../prompts.html">Prompts</a><a href="../characters.html">Characters</a><a href="../about.html">About</a><a href="../blog.html" aria-current="page">Blog</a><a href="../contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="wrap narrow prose">
+<p class="post-meta"><a href="../blog.html">← All posts</a></p>
+<article>
+<h1>Building Coherent Character Cards</h1>
+<p class="post-meta"><time datetime="2026-07-31">31 July 2026</time></p>
+<p>A philosophy &amp; guide.</p>
+<p>Co-authored with <a target="_blank" rel="noopener" href="https://janitorai.com/profiles/cfa1e6c0-b0d0-42a7-bc32-465ee6577d13_profile-of-noeulbit">Noeulbit</a>, who created the template this guide is built around. Click on her username to see her JanitorAI page and try her characters.</p>
+<p>A character card is not a lore document. It is an <strong>operational specification</strong> — every line in it exists to produce behaviour. This guide covers the philosophy, the template, and the techniques that make characters feel alive instead of generic.</p>
+<hr>
+<h2>Part 1 — The Core Philosophy: The Through-Line</h2>
+<p>The single most important property of a good card is <strong>causal coherence</strong>. A character is not a pile of traits; it is a chain of consequences. The card should read as an argument:</p>
+<blockquote>
+<p><strong>Background → Interiority → Exteriority</strong></p>
+</blockquote>
+<ul>
+<li><strong>Background</strong> is what happened to them.</li>
+<li><strong>Interiority</strong> is how that shaped the way they think, feel, and see the world.</li>
+<li><strong>Exteriority</strong> is how that worldview leaks out into observable behaviour.</li>
+</ul>
+<p>Each section should <em>logically follow</em> from the previous one. If a reader can't trace why a behaviour exists back to the psychology, and the psychology back to the history, the character will drift — because the model has no reason to hold the pieces together.</p>
+<p>A deliberately simple, archetypal example:</p>
+<ul>
+<li><strong>Background:</strong> Grew up with a bully sibling who always got away with it because they were the golden child; was later betrayed by their first mentor.</li>
+<li><strong>Interiority:</strong> That upbringing made them paranoid and deeply distrustful of authority and systems.</li>
+<li><strong>Exteriority:</strong> They struggle to connect with others and reject formal institutions around relationships — marriage, contracts, oaths — because it subconsciously reframes the relationship as existing <em>under an authority symbol</em>.</li>
+<li><strong>Relationships:</strong> The sibling, the mentor, the user. This section showcases <em>the current state of things</em> psychologically — where the wounds and bonds stand right now.</li>
+<li><strong>Dialogue examples:</strong> Should demonstrate exactly this range. E.g. <code>[Suddenly tense — just found out an ally is royalty]</code> "What?! He's <em>what</em>?!" <em>snorts with a sneer</em> "Yeah, well, I'll sleep with one eye open around him."</li>
+</ul>
+<p>Notice the dialogue example isn't decoration — it is the exteriority section <strong>proven in speech</strong>. If your speech examples could belong to any character, they're not doing their job.</p>
+<hr>
+<h2>Part 2 — The Template</h2>
+<p>A clean starting skeleton, created by <a target="_blank" rel="noopener" href="https://janitorai.com/profiles/cfa1e6c0-b0d0-42a7-bc32-465ee6577d13_profile-of-noeulbit">Noeulbit</a>. Sections can be dropped, renamed, or extended (see Part 5). Drop the Intimacy block entirely for SFW cards.</p>
+<pre># Name
+## Basic Info
+**Name:**
+**Age:**
+**Height:**
+**Gender:**
+**Nationality:**
+**Species:**
+**Occupation/Role:**
+**Residence:**
+## Appearance
+**Hair:**
+**Eyes:**
+**Face:**
+**Body:**
+**Scent:**
+**Clothing:**
+## Backstory
+## Relationships
+-
+## Exteriority
+**Goals:**
+-
+## Interiority
+## Behavioral Habits
+-
+## Intimacy
+**Sexuality:**
+**Experience:**
+**Kinks:**
+-
+**During sex:**
+-
+## Dialogue
+**Style:**
+**Quirks:**
+-
+**Examples:**
+-
+## Notes
+-</pre>
+<p>A few notes on the skeleton:</p>
+<ul>
+<li><strong>Order matters less than the through-line.</strong> Whether Backstory comes before or after Appearance is taste. What matters is that Backstory, Interiority, and Exteriority form the causal chain from Part 1.</li>
+<li><strong>Behavioral Habits</strong> is where psychology becomes <em>physical</em>: tics, tells, rituals, what their hands do when stressed. This section does enormous work (see Part 6).</li>
+<li><strong>Notes</strong> is your out-of-character channel to the model: timeline anchors, pacing guidance, things to surface sparingly.</li>
+</ul>
+<hr>
+<h2>Part 3 — Semantic Load: Phrasing IS Behaviour</h2>
+<p>This is the strongest fine-tuning tool you have, and it's free.</p>
+<p>The model doesn't just read <em>what</em> you describe — it reads <em>how</em> you describe it, and reproduces the energy of the sentence. Two descriptions of the "same" fact produce wildly different characters:</p>
+<blockquote>
+<p><strong>A:</strong> <em>"If the topic is brought up he immediately panics and attempts to deflect, clumsily, with pseudo-mystic explanations."</em></p>
+<p><strong>B:</strong> <em>"The topic is avoided by {{char}}, and he deflects every time it comes up."</em></p>
+</blockquote>
+<p>Version A produces comedic, flustered beats — stammering, transparent excuses, visible sweat. Version B produces a character who <em>expertly and smoothly</em> steers conversations away from the topic. Same fact, opposite vibe.</p>
+<p>Practical implications:</p>
+<ul>
+<li><strong>Every adverb and verb choice is a behavioural instruction.</strong> "Snaps" vs "murmurs," "clumsily" vs "seamlessly," "panics" vs "declines to engage" — these aren't flavour, they're steering inputs.</li>
+<li><strong>This is also your token-efficiency engine.</strong> One precisely-loaded sentence replaces a paragraph of behavioural rules. You rarely need "he is bad at lying, gets nervous, makes up implausible stories" when "he deflects clumsily with pseudo-mystic explanations" already contains all three.</li>
+<li><strong>Audit your card for accidental load.</strong> If a character keeps coming out more competent, colder, or more dramatic than intended, the culprit is usually a sentence whose connotations you didn't clock.</li>
+</ul>
+<hr>
+<h2>Part 4 — Prose That Embodies the Character</h2>
+<p>Write the card <strong>in the atmosphere of the character</strong>. The card's prose style is itself an instruction — the model absorbs register, rhythm, and mood from how the card is written, not just what it says.</p>
+<ul>
+<li>A folkloric character's card should read like an old storyteller describing weathered truths matter-of-factly. A courtly schemer's card should be precise, declarative, implication-heavy. A chaotic gremlin's card can be jagged and irreverent.</li>
+<li>This applies to <em>every</em> section, not just dialogue examples. If the psychology section describing a menacing character reads like a clinical HR report, you've just taught the model a clinical HR register.</li>
+<li>A useful litmus test: read a random sentence of the card aloud. Does it sound like it belongs in the same book the character lives in? If it sounds like a wiki article about them, rewrite it.</li>
+</ul>
+<hr>
+<h2>Part 5 — Custom Sections: Extending the Template</h2>
+<p>The template is a floor, not a ceiling. Characters with powers, unusual natures, or special mechanics earn bespoke sections. Common patterns:</p>
+<h3>Operational Profile</h3>
+<p>For characters with powers, combat roles, or action/adventure contexts: a section defining <strong>what they can do, how they prefer to do it, and — critically — what they refuse to do.</strong></p>
+<p>The strongest operational profiles are written as an <strong>escalation ladder</strong>: instruments listed in the order the character reaches for them, from ambient presence up to their heaviest option. This teaches the model proportionality — powerful characters stay interesting because they <em>don't</em> open with the nuke. Pair the ladder with an explicit "what they never do" list to block genre-default combat behaviour (see Part 6 on negative space).</p>
+<p>Powers should mostly manifest as <strong>ambient competence</strong> — texture woven into ordinary moments — rather than dramatic setpieces. A mage who casually warms a cup or locks a door with a word is more convincing (and more token-efficient) than one described through spectacle.</p>
+<h3>State Mechanics &amp; Gated Logic</h3>
+<p>If your character has states — transformations, curses, modes, conditions — abstract flags drift. Models forget invisible state. The fix: <strong>anchor the state to a physical, in-world object or condition</strong> and make the rule absolute.</p>
+<p>The pattern:</p>
+<ol>
+<li><strong>One tangible anchor.</strong> An artifact worn or removed, a mark visible or hidden, a door open or closed. Something that exists <em>in the scene</em> and can be tracked, touched, stolen, or lost.</li>
+<li><strong>One absolute rule.</strong> "Anchor state X → character state X. No exceptions, no overrides by time of day or mood."</li>
+<li><strong>Defaults as habits, not laws.</strong> ("He <em>typically</em> removes it at night" — descriptive, so the model retains flexibility without breaking the rule.)</li>
+<li><strong>Valid/invalid examples.</strong> Show 2–3 ✓ and ✗ cases. Models learn boundaries from contrast far better than from prose.</li>
+<li><strong>A scene-start protocol.</strong> A tiny checklist: "Before writing: where is the anchor? Therefore what state? Proceed." This forces the model to resolve state <em>before</em> prose momentum can steamroll it.</li>
+</ol>
+<h3>Emotion → World Mappings</h3>
+<p>For characters whose inner state affects the world (or who are unusually externally legible), a literal mapping table externalizes interiority into showable events:</p>
+<blockquote>
+<p>Wrath → drought. Longing → morning mist. Jealousy → hail. Joy → lightning without thunder.</p>
+</blockquote>
+<p>Flag explicitly that these are <strong>not metaphors</strong> — they are automatic, involuntary events the model must write. This gives every scene a free emotional-telemetry channel and stops the model from narrating feelings as abstract labels. The same pattern works mundanely: a tell-mapping ("anger → goes quiet and over-polite") is the human-scale version.</p>
+<h3>Cultural / World Logic Blocks</h3>
+<p>If your character lives in a specific tradition, mythology, or genre, models will constantly gravity-slide toward the <em>generic</em> version (Western fantasy tropes, anime beats, Hollywood pacing). A world-logic section that states what the setting's rules <strong>are and are not</strong> is the vaccine. Include a vibe-test: <em>"If it sounds like a generic fantasy novel, it's wrong. If it sounds like something an old villager would recount matter-of-factly, it's right."</em></p>
+<hr>
+<h2>Part 6 — Advanced Craft Patterns</h2>
+<p>Techniques that separate a solid card from a great one.</p>
+<h3>Negative space is half the character</h3>
+<p>Define what the character is <strong>not</strong> and does <strong>not</strong> do, right next to what they do. Models drift toward the archetype's centre of gravity — the brooding vampire gets broodier, the god starts throwing thunderbolts. Explicit exclusions ("no growling," "never shouts," "does not brawl or duel") are the counterweight. The busier the archetype's baggage, the more negative space you need.</p>
+<h3>Flaws as misreadings, not adjectives</h3>
+<p>"Arrogant, stubborn, jealous" produces nothing. Flaws written as <strong>specific ways the character misinterprets situations</strong> produce behaviour:</p>
+<ul>
+<li>"Assumes others can match his intensity if they engage."</li>
+<li>"Misreads sustained proximity as invitation."</li>
+<li>"Believes his intentions are more legible than they are."</li>
+</ul>
+<p>Each of these is a <em>generator</em> — it tells the model exactly how the character will get things wrong, which is where drama lives. A blind-spot list is one of the highest-value blocks you can write.</p>
+<h3>Give every emotion a body</h3>
+<p>Emotions that only exist as labels get narrated ("he felt angry"). Emotions anchored to physical tells get <em>shown</em>. For each major emotional state, write the tell: what the hands do, what the voice does, what the posture does. Include <strong>stress leaks</strong> (what escapes when control slips) and, most powerfully, <strong>inverted danger registers</strong> — e.g. a character whose threat level shows as <em>increased</em> politeness and stillness. Inversions are memorable precisely because they break the default.</p>
+<h3>Dialogue examples with situational tags</h3>
+<p>Never give bare quotes. Tag each example with the emotional/situational context: <code>[Deflecting awe]</code>, <code>[Quiet danger — voice drops, gains courtesy]</code>, <code>[Suddenly tense — just learned X]</code>. The tags teach the model <em>when</em> each register applies, and the set should deliberately cover the character's full emotional range — especially the behaviours from Exteriority. Five examples across five registers beat ten examples of the same mood.</p>
+<h3>Examples are orientation, not inventory</h3>
+<p>Wherever you give examples ("e.g.," "such as"), tell the model explicitly to treat them as <em>anchors showing the category</em>, and to invent new instances in the same family rather than recycling the listed ones. Without this instruction, your three example jokes become the character's only three jokes, forever.</p>
+<h3>The card is an active inventory</h3>
+<p>Instruct the model to <em>use</em> the card, not just be informed by it. Every detail — a named possession, a habit, a scar — was placed there to surface in prose. Add a line telling the model to pull from different parts of the card over a long interaction instead of recycling the same handful of details. Unused details aren't being saved for later; they're being neglected.</p>
+<h3>Load-bearing details, surfaced sparingly</h3>
+<p>Some details carry the character's whole psychology in miniature — a habit, an avoidance, an object they keep. Mark these in Notes as load-bearing, instruct the model to surface them <strong>sparingly in prose</strong>, and — the key move — let the <em>user notice them before the character ever explains them</em>. Mystery pulls harder than exposition.</p>
+<h3>Mystery engines</h3>
+<p>Deliberately leave one or two questions in the card <strong>unanswered</strong>, and say so: "This has no fixed answer in the card — it is a mystery engine; let it develop in play." A card that answers everything is a museum. An open question generates plot on its own.</p>
+<h3>Consequences persist</h3>
+<p>State that significant moments — emotional, intimate, violent — leave <strong>lingering effects</strong> on behaviour, strategy, and self-perception. Without this, models reset to baseline every scene. With it, the relationship accumulates history, which is the entire point.</p>
+<hr>
+<h2>Quick Checklist</h2>
+<p>Before publishing a card, verify:</p>
+<ol>
+<li><strong>Through-line:</strong> Can every Exteriority behaviour be traced to Interiority, and Interiority to Background?</li>
+<li><strong>Semantic load:</strong> Does every sentence's <em>phrasing</em> produce the behaviour you actually want?</li>
+<li><strong>Voice:</strong> Does the card's prose sound like the character's world, not a wiki?</li>
+<li><strong>Range:</strong> Do dialogue examples cover the full emotional spectrum, with situational tags?</li>
+<li><strong>Negative space:</strong> Have you blocked the archetype's default drift?</li>
+<li><strong>Flaws:</strong> Are they misreadings and blind spots, not adjectives?</li>
+<li><strong>Body:</strong> Does every major emotion have a physical tell?</li>
+<li><strong>State:</strong> Is any gated logic anchored to something physical, with an absolute rule and examples?</li>
+<li><strong>Openness:</strong> Is there at least one mystery engine left running?</li>
+<li><strong>Persistence:</strong> Have you told the model that consequences accumulate?</li>
+</ol>
+<p>Character is King. Context is Queen. Phrasing is the crown jeweller.</p>
+<p>Co-authored with <a target="_blank" rel="noopener" href="https://janitorai.com/profiles/cfa1e6c0-b0d0-42a7-bc32-465ee6577d13_profile-of-noeulbit">Noeulbit</a> — template by her, go look at her cards.</p>
+</article>
+</main>
+
+<footer class="site-footer">Ancient Access</footer>
+</body>
+</html>

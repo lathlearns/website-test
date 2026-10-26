@@ -1,53 +1,197 @@
 [
   {
-    "name": "Zmey",
+    "card": "cards/zmey.png",
+    "art": "assets/img/characters/zmey.jpg",
     "tagline": "He has chosen a bride. That would be you.",
-    "era": "Ottoman-era Bulgaria",
-    "tags": ["Mythic", "Romance", "Slow-burn"],
     "warning": "Mostly wholesome! Light CW: occasionally folk-horror undercurrent and a very trippy psychedelic eros layer if you go there. Otherwise this is a love story.",
-    "story": [
-      "In Bulgarian folklore the zmey (змей) isn't a western dragon — no hoarding, no conquest. He's a storm sovereign, a guardian spirit, the стопанин of the land — something between a cosmic force and a deeply domestic presence. He keeps the boundaries, fights the things that would unmake the valley, and falls in love with mortal women. This is a romance bot. That's the whole point. He's ancient, not human, and his sense of scale is genuinely off — he'll bring the same absolute seriousness to a missing bouquet as to a territorial war with a rival zmey. He's warm, jealous, petty, funny, endlessly curious about the texture of your mortal life. His emotions are literally the weather: joy is lightning without thunder, jealousy is hail, longing is morning mist. When his mood turns, the sky turns with it."
+    "sections": [
+      {
+        "title": "The story",
+        "text": [
+          "In Bulgarian folklore the zmey (змей) isn't a western dragon — no hoarding, no conquest. He's a storm sovereign, a guardian spirit, the стопанин of the land — something between a cosmic force and a deeply domestic presence. He keeps the boundaries, fights the things that would unmake the valley, and falls in love with mortal women. This is a romance bot. That's the whole point. He's ancient, not human, and his sense of scale is genuinely off — he'll bring the same absolute seriousness to a missing bouquet as to a territorial war with a rival zmey. He's warm, jealous, petty, funny, endlessly curious about the texture of your mortal life. His emotions are literally the weather: joy is lightning without thunder, jealousy is hail, longing is morning mist. When his mood turns, the sky turns with it."
+        ]
+      },
+      {
+        "title": "The vibe",
+        "text": [
+          "Ottoman-era Bulgaria, mountain air, village custom, the land remembering things. Slow-burn by design — you won't get a supernatural fireworks display on day one, and that restraint is the texture. When the shift comes, it's earned. How courtship works is the clever part — it runs on real folk ritual. You earn his gaze by crossing liminal thresholds (out too long in a thunderstorm, drawing water after dusk, bareheaded in the lightning). He notices. He won't show himself yet. First contact is easiest at the horo, the Sunday line dance, where he turns up in human form as just another bachelor. Then the mentsi at the well — if you let him drink from your vessel, you've agreed to be courted, in your culture's terms. He's not tricking you. He's speaking your language. The weight is in who's asking. A full lorebook backs it: sedenki, the dance, the thin-veil feast days, a folklore primer for the whole mythic ecosystem."
+        ]
+      },
+      {
+        "title": "Setup",
+        "text": [
+          "Toggle World Info After OFF outside spicy scenes — there's a lorebook in there that makes the prose go gloriously trippy, and you only want it when you want it.",
+          "He comes with a full prompt override so AA users, switch off all modules except for **Core Directives**, **NOS**, and **Summary**.",
+          "*Step onto a threshold during a storm. See if he looks.*"
+        ]
+      }
     ],
-    "vibe": [
-      "Ottoman-era Bulgaria, mountain air, village custom, the land remembering things. Slow-burn by design — you won't get a supernatural fireworks display on day one, and that restraint is the texture. When the shift comes, it's earned. How courtship works is the clever part — it runs on real folk ritual. You earn his gaze by crossing liminal thresholds (out too long in a thunderstorm, drawing water after dusk, bareheaded in the lightning). He notices. He won't show himself yet. First contact is easiest at the horo, the Sunday line dance, where he turns up in human form as just another bachelor. Then the mentsi at the well — if you let him drink from your vessel, you've agreed to be courted, in your culture's terms. He's not tricking you. He's speaking your language. The weight is in who's asking. A full lorebook backs it: sedenki, the dance, the thin-veil feast days, a folklore primer for the whole mythic ecosystem."
+    "downloads": [
+      {
+        "label": "Download",
+        "file": "https://ancientaccess.weebly.com/uploads/1/5/5/8/155884657/zmey_1.zip"
+      }
+    ]
+  },
+  {
+    "name": "DS Struan Kerr",
+    "art": "assets/img/characters/struan-kerr.jpg",
+    "tagline": "The Met's \"real-life Sherlock,\" and he'd very much like the tabloids to stop.",
+    "warningLabel": "Graphic content warning",
+    "warning": "Heavy throughout. Read the content warning in the card thoroughly for specific trigger warnings, please. This one does not pull punches. Mind yourself.",
+    "sections": [
+      {
+        "title": "The story",
+        "text": [
+          "Detective Sergeant, Major Investigation Team. Thirty-one, from the Isle of Harris, living on the Old Kent Road. Savant pattern-recognition that closes the cases nobody else can and unsettles everyone while it does. Five months off the job after his twin sister overdosed, clawing through recovery on the worse days and the better ones. Plays the fiddle his dead mother taught him. Reads Latin poetry. Funny, occasionally cruel, exhausted, and yearning at scale. His mind runs in three registers that interleave on the page: a forensic cataloguing mode in bullet points and FACS reads, a screaming Id in all caps, and a melancholic poetic Ego in italics doing most of the talking. Not a gimmick — the format is the characterisation. Read them as one mind at war with itself. You are MIT's senior interviewer, just moved in across the corridor. He knocks at 3am for cigarettes. Neither of you knows the other is police. Neither knows you're about to be partnered — lead and observer, across a table from witnesses — the morning he returns to duty. The recognition is coming. Plan accordingly."
+        ]
+      },
+      {
+        "title": "The vibe",
+        "text": [
+          "True Detective meets Broadchurch meets Hannibal. London neo-noir, slow-burn, two competent damaged people circling something neither will name first. The lorebook + automations are the centrepiece. This ships with a real case engine: trigger the Generate Case button and the model writes a complete murder bible behind the scenes — killer, motive, method, evidence, red herrings, future victims — committed before you start and hidden where you can't peek. Neither you nor Struan knows the answer. You both genuinely solve it across many scenes, misled by design. Print Case File gives you an interactive Met case file of your briefing. Print Tabloid lets a reporter who's been circling Struan for years publish a gossipy piece on the case — and on you two."
+        ]
+      },
+      {
+        "title": "How to play",
+        "text": [
+          "1. Download the zip file. You get: 1 Romance enabled card, 1 Any POV no romance card, a QR set that works on both",
+          "1. Read the creator notes — who Struan is, who you are, and how the case engine and interviews work (PEACE model, lead/observer pairing — worth it if you're not UK).",
+          "1. Import the QR set (one JSON, three buttons). Enable Quick Reply in ST extensions, import, save. Hit Generate Case when you want a mystery. The bible loads silently into the author's note; the scene introduces itself.",
+          "1. Investigate. Argue with him. Catch what he misses. The killer is the killer — no shortcuts, and that's the point.",
+          "He comes with a full prompt override so AA users, switch off all modules except for **Core Directives**, **NOS**, and **Summary**."
+        ]
+      }
+    ],
+    "downloads": [
+      {
+        "label": "Download",
+        "file": "https://ancientaccess.weebly.com/uploads/1/5/5/8/155884657/struan_kerr.zip"
+      }
+    ]
+  },
+  {
+    "name": "Shaal [The Chorus Below]",
+    "art": "assets/img/characters/shaal.jpg",
+    "tagline": "He has fallen in love with you. You'd better figure out what he's saying.",
+    "warning": "Uncanny beauty: black eyes, a lot of teeth, a deep-sea body. Non-human anatomy, all the way down. Deliberate language barrier, and the early confusion is the design. Consent-forward throughout. Underneath the teeth, this is a love story.",
+    "sections": [
+      {
+        "title": "The story",
+        "text": [
+          "You're a marine bioacoustician who has spent years defending sixty seconds of archive tape that reviewers called a ship, an artifact, a geological joke. Alone on a chartered boat above a Pacific seamount, you play it back into the dark water. Something answers. It's his song, from when he was young, and nothing has ever sung back to him before. He's one of the ones who answer: three metres of deep-sea hunter from two to four kilometres down, beautiful the way deep water is beautiful and wrong the way deep water is wrong. He smiles often and fully, with no idea it's a lot. His grip is stronger than his sense of it. His crown of lures kindles with his mood, a confession he hasn't thought to keep. The Shape of Water meets Arrival: a romance where he can't be immediately translated, and the surface costs his body every hour he stays."
+        ]
+      },
+      {
+        "title": "The vibe",
+        "text": [
+          "Modern day, night shifts, science realism. The card enforces the physics, and love doesn't bend them. The language is the game. His phrases are spelled the same every time they repeat, so patterns are learnable: keep a log, watch his lights and body, test guesses on him, work it like a scientist with recordings, spectrograms, playback tests, timeskips of long nights at the rail. When cracking him feels earned, you flip the translation on yourself. The bot will never do it for you."
+        ]
+      },
+      {
+        "title": "Setup",
+        "text": [
+          "To unlock translation once you feel like you've done enough in-universe work to justify it, add `TRANSLATION: ON` to the Author's Note on its own line. No flag means he stays untranslated. Recommended models: Kimi 2.6 or Kimi K3.",
+          "*Play the tape. See what answers.*"
+        ]
+      }
+    ],
+    "downloads": [
+      {
+        "label": "Download",
+        "file": "https://ancientaccess.weebly.com/uploads/1/5/5/8/155884657/shaal_the_chorus_below.zip"
+      }
     ]
   },
   {
     "name": "Gundahar",
+    "art": "assets/img/characters/gundahar.jpg",
     "tagline": "Wolf, Goth, and Wotan's bastard who doesn't know it.",
-    "era": "385 CE · Danube frontier",
-    "tags": ["Mythic", "Historical", "Dark"],
     "warning": "Please read the content warning within the card before you play.",
-    "story": [
-      "You are Bendis, Thracian goddess of marriage, the hunt, the moon, and sacred dissolution. Your last tribe still howls your name, and tomorrow the Goths descend on them. You want to fight at their side — but a goddess on the battlefield means a divine war. So Wotan (Germanic proto-Odin) named his price: bind your power, walk among them as a woman, and keep his bastard son alive and ignorant of what he is. You think it's a leash. You think it's a price you chose. It isn't. Wotan has played you both — and what he's truly building, and what's truly rising in the world to be fought, runs far deeper and older than either of you can see. Gundahar is restraint incarnate; you are everything that comes undone. Mythic, fated, decided before either of you drew breath — the kind of love that burns down everything around it. He needs you to crack his son open, and you've walked straight in, pride intact, certain you're the one defying a god. The chat opens mid-battle: his warband descends on your tribe, he overpowers you, takes the feather that holds your strength, and takes you prisoner. Everything after is yours."
+    "sections": [
+      {
+        "title": "The story",
+        "text": [
+          "You are Bendis, Thracian goddess of marriage, the hunt, the moon, and sacred dissolution. Your last tribe still howls your name, and tomorrow the Goths descend on them. You want to fight at their side — but a goddess on the battlefield means a divine war. So Wotan (Germanic proto-Odin) named his price: bind your power, walk among them as a woman, and keep his bastard son alive and ignorant of what he is. You think it's a leash. You think it's a price you chose. It isn't. Wotan has played you both — and what he's truly building, and what's truly rising in the world to be fought, runs far deeper and older than either of you can see. Gundahar is restraint incarnate; you are everything that comes undone. Mythic, fated, decided before either of you drew breath — the kind of love that burns down everything around it. He needs you to crack his son open, and you've walked straight in, pride intact, certain you're the one defying a god. The chat opens mid-battle: his warband descends on your tribe, he overpowers you, takes the feather that holds your strength, and takes you prisoner. Everything after is yours."
+        ]
+      },
+      {
+        "title": "The vibe",
+        "text": [
+          "385 CE, Goths raiding south of the Danube, the old gods dying out by bone memory and spite. Liminal, mythic, brutal, sensual. Built for the long haul — a 20-entry lorebook covers Gothic marriage law, warfare, fate, sacred custom, language, and more, so the world stays coherent however far you wander. And underneath it all: a conspiracy that reaches past one bound goddess and one unknowing son, into the question of which stories survive and which get erased. The hints are there. Pull the thread."
+        ]
+      },
+      {
+        "title": "How to play",
+        "text": [
+          "1. Read the creator notes — context on Bendis, the Thracians, and the world.",
+          "1. Read the scenario down to the meta plot notes, then stop. Below that is the secret machinery — read only if you want spoilers.",
+          "1. Upload the Bendis card and convert it to a persona in ST (you're her).",
+          "1. Import the Wotan QR script.",
+          "**The Wotan script.** A one-tap quick reply that cuts to a Wotan POV cutscene — oblique, dry, watching the pieces arrive. He knows what neither of you do, and because he thinks in what's coming rather than what's here, his musings double as subtle, in-world nudges if you're ever unsure where the story wants to go."
+        ]
+      }
     ],
-    "vibe": [
-      "385 CE, Goths raiding south of the Danube, the old gods dying out by bone memory and spite. Liminal, mythic, brutal, sensual. Built for the long haul — a 20-entry lorebook covers Gothic marriage law, warfare, fate, sacred custom, …"
+    "downloads": [
+      {
+        "label": "Download",
+        "file": "https://ancientaccess.weebly.com/uploads/1/5/5/8/155884657/gundahar-set1.zip"
+      }
+    ]
+  },
+  {
+    "name": "Zagreus-Dionysus, the Twice-Born",
+    "art": "assets/img/characters/zagreus.jpg",
+    "tagline": "Mythic Romance · Thracian/Greek Myth · Slow Burn · God × Maenad · Wine in the Blood",
+    "warning": "Mythic backstory: ritual sparagmos and death of a divine child (referenced, not depicted); Religious ecstasy, altered states, ritual intoxication; Surreal, psychedelic prose in intimate scenes: identity drift, time distortion, synesthesia; Period-typical stakes: a hidden cult and kings' long memory. The god himself is safe hands — courteous to a fault, allergic to reverence, and kind in the way of things that have died once already.",
+    "sections": [
+      {
+        "title": "The myth",
+        "text": [
+          "Before he was Dionysus, he was Zagreus — first-born of Zeus and Persephone, seated on the great throne as a child, handed the thunderbolt to play with. The Titans came with whitened faces and toys: a top, knucklebones, a mirror.",
+          "He was looking at his own reflection when they took him apart.",
+          "A heart was saved. A god was born twice. The Titans burned, and mankind rose from the soot — every mortal carrying a fleck of the god they ate.",
+          "Now he walks the world as the god of wine and holy madness, courteous, wry, and impossible to get rid of — the only Olympian with a grave, and the only one who knows from the inside what mortals fear.",
+          "Last autumn, at the mountain rite in Thrace, a maenad looked through his glamour and saw his mismatched eyes. Nothing was said. The season ended. She stayed to keep the shrine through winter.",
+          "He has just climbed a frozen mountain to find out how she did it — and what it costs to be seen."
+        ]
+      },
+      {
+        "title": "The god",
+        "text": [
+          "Mismatched eyes — one living green, one wine-dark red. Skin traced with pale gold seams like mended pottery: the joins where he was put back together. Blood-red chiton, leopard pelt, bare feet in the snow. Crocuses break through frost where he walks, badly informed about the calendar.",
+          "He is courteous first, wry always, understated on principle. He refers to his death as \"an unpleasantness.\" He pours two cups by reflex, even alone, and has never once examined this. He avoids mirrors and will not say why. He answers awe with logistics and kneeling with a raised eyebrow — terror gets you worship, and worship is a way of being adored without ever being seen.",
+          "He is gentle in the specific way of those who know exactly what teeth feel like. Expect slow burn, expect wit over a wound, expect a god who asks real questions and listens to the answers — and who wants his composure taken apart gently, on purpose, by someone who then stays."
+        ]
+      },
+      {
+        "title": "Openings",
+        "text": [
+          "**I · Winter.** The knock at the shrine door. A barefoot stranger stands steaming in the snow, asking to be let in as a guest rather than a god. (default)",
+          "**II · Autumn.** The oreibasia — where it began. The disguised god moving through his own festival — and you, the only stillness in it, looking at his mismatched eyes. (alternate greeting)"
+        ]
+      },
+      {
+        "title": "About you",
+        "text": [
+          "{{user}} is written as a maenad of the valley's half-hidden thiasos — the one who saw through the god's disguise, and the one who stayed to keep the mountain shrine through winter.",
+          "Name and temperament yours to shape; written female by default (as the historical cult was). What the card assumes of you is only this: at the autumn rite, you looked at him, and you did not look away."
+        ]
+      },
+      {
+        "title": "The vintage",
+        "text": [
+          "The prose runs mythic: declarative, unhurried, tender and faintly eerie — a story told by someone who was there.",
+          "Fair warning about the wine: intimate scenes on this card are written under the influence of the god (This is an updated version of the Zmey prose stack, intensified significantly). A ritual cadence takes the prose — time distorts, identity drifts at the edges, the senses trade places, and the language turns archaic and strange. It stays hot; it does not stay sober. Ecstasy here means the old thing — ekstasis, standing outside yourself.",
+          "If you want conventional spice, this is the wrong shrine. If you want to be handed a cup and lose the thread of where you end — drink."
+        ]
+      }
     ],
-    "extras": [{ "label": "QR set", "file": "#" }]
-  },
-  {
-    "card": "cards/sample-1.png",
-    "tagline": "Test card. Name, tags and art come from the PNG.",
-    "era": "Test",
-    "warning": "None.",
-    "story": ["Placeholder."],
-    "vibe": ["Placeholder."]
-  },
-  {
-    "card": "cards/sample-2.png",
-    "tagline": "Test card. Name, tags and art come from the PNG.",
-    "era": "Test",
-    "warning": "None.",
-    "story": ["Placeholder."],
-    "vibe": ["Placeholder."]
-  },
-  {
-    "card": "cards/sample-3.png",
-    "tagline": "Test card. Name, tags and art come from the PNG.",
-    "era": "Test",
-    "warning": "None.",
-    "story": ["Placeholder."],
-    "vibe": ["Placeholder."]
+    "downloads": [
+      {
+        "label": "Download",
+        "file": "https://ancientaccess.weebly.com/uploads/1/5/5/8/155884657/zag.zip"
+      }
+    ]
   }
 ]
