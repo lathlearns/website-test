@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Characters - Ancient Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0a08;
+    --bg-2: #13110d;
+    --panel: #18150f;
+    --line: #2c271d;
+    --text: #e6dfd0;
+    --muted: #a39a87;
+    --gold: #c9a96e;
+    --gold-dim: #8a744b;
+    --serif: "Bitter", Georgia, serif;
+    --sans: "Open Sans", system-ui, sans-serif;
+    --nav: "Montserrat", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); }
+  body { min-height: 100vh; }
+  a { color: var(--gold); }
+
+  /* Header */
+  header { background: var(--bg-2); border-bottom: 1px solid var(--line); }
+  .brand { text-align: center; padding: 18px 16px 10px; }
+  .brand .mark { font-family: var(--serif); letter-spacing: .18em; font-size: 13px; color: var(--gold); }
+  nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 30px; padding: 8px 16px 0; border-top: 1px solid var(--line); }
+  nav a { font-family: var(--nav); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--text); text-decoration: none; padding: 8px 0 9px; border-bottom: 2px solid transparent; }
+  nav a.on { border-bottom-color: var(--gold); }
+
+  /* Compact hero */
+  .hero { text-align: center; padding: 34px 16px 22px; background: #000; }
+  .hero h1 { font-family: var(--serif); font-weight: 700; letter-spacing: .08em; font-size: clamp(28px, 4vw, 40px); margin: 0 0 8px; }
+  .hero p { font-style: italic; margin: 0; color: var(--text); }
+
+  main { max-width: 1120px; margin: 0 auto; padding: 18px 16px 48px; }
+
+  /* Read-first notice, collapsed by default */
+  details.notice { border: 1px solid var(--line); background: var(--bg-2); margin-bottom: 18px; }
+  details.notice summary { cursor: pointer; padding: 12px 16px; font-family: var(--serif); letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: var(--gold); list-style: none; }
+  details.notice summary::-webkit-details-marker { display: none; }
+  details.notice summary::after { content: "+"; float: right; }
+  details.notice[open] summary::after { content: "–"; }
+  details.notice div { padding: 0 16px 14px; font-style: italic; color: var(--muted); line-height: 1.7; font-size: 14px; }
+
+  /* Toolbar */
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 18px; }
+  .search { flex: 1 1 220px; max-width: 300px; background: var(--bg-2); border: 1px solid var(--line); color: var(--text); padding: 9px 12px; font: inherit; font-size: 14px; }
+  .search:focus { outline: 1px solid var(--gold-dim); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { background: transparent; border: 1px solid var(--line); color: var(--muted); font-family: var(--nav); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; padding: 7px 11px; cursor: pointer; }
+  .chip.on { border-color: var(--gold); color: var(--gold); }
+
+  /* Grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
+  .tile { background: var(--panel); border: 1px solid var(--line); cursor: pointer; text-align: left; padding: 0; color: inherit; font: inherit; display: flex; flex-direction: column; transition: border-color .15s, transform .15s; }
+  .tile:hover, .tile:focus-visible { border-color: var(--gold-dim); transform: translateY(-2px); outline: none; }
+  .art { aspect-ratio: 3 / 4; width: 100%; background-size: cover; background-position: center; display: grid; place-items: center; font-family: var(--serif); font-size: 64px; color: rgba(201,169,110,.35); }
+  .tile .body { padding: 12px 12px 14px; }
+  .tile h3 { font-family: var(--serif); letter-spacing: .1em; text-transform: uppercase; font-size: 16px; margin: 0 0 6px; }
+  .tile p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted); font-style: italic; }
+  .tile .era { font-family: var(--nav); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dim); margin-top: 8px; }
+  .empty { color: var(--muted); font-style: italic; padding: 30px 0; text-align: center; grid-column: 1 / -1; }
+
+  /* Detail modal */
+  dialog { border: 1px solid var(--line); background: var(--bg-2); color: var(--text); padding: 0; width: min(920px, calc(100vw - 32px)); max-height: calc(100vh - 40px); }
+  dialog::backdrop { background: rgba(0,0,0,.78); }
+  .modal { display: grid; grid-template-columns: 300px 1fr; max-height: calc(100vh - 42px); }
+  .modal .art { aspect-ratio: auto; height: 100%; min-height: 400px; font-size: 96px; }
+  .content { display: flex; flex-direction: column; min-height: 0; }
+  .content header { background: none; border: 0; padding: 22px 24px 0; position: relative; }
+  .content h2 { font-family: var(--serif); letter-spacing: .1em; text-transform: uppercase; margin: 0 0 6px; font-size: 26px; }
+  .content .tagline { font-weight: 600; margin: 0 0 14px; }
+  .close { position: absolute; top: 14px; right: 16px; background: none; border: 0; color: var(--muted); font-size: 26px; cursor: pointer; line-height: 1; }
+  .tabs { display: flex; gap: 22px; border-bottom: 1px solid var(--line); padding: 0 24px; }
+  .tabs button { background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); padding: 10px 0; cursor: pointer; font-family: var(--nav); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+  .tabs button.on { color: var(--text); border-bottom-color: var(--gold); }
+  .pane { padding: 18px 24px; overflow-y: auto; line-height: 1.75; font-size: 14.5px; flex: 1; }
+  .pane p { margin: 0 0 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 24px 4px; }
+  .tags span { font-family: var(--nav); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--line); padding: 4px 8px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 14px 24px 20px; border-top: 1px solid var(--line); }
+  .btn { font-family: var(--serif); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; padding: 10px 16px; text-decoration: none; border: 1px solid var(--gold); }
+  .btn.primary { background: var(--gold); color: #1a1408; }
+  .btn.ghost { color: var(--gold); }
+
+  @media (max-width: 720px) {
+    .modal { grid-template-columns: 1fr; overflow-y: auto; }
+    .modal .art { min-height: 0; height: 220px; }
+    .pane { overflow: visible; }
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    nav { gap: 2px 18px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="mark">ANCIENT ACCESS</div></div>
+  <nav>
+    <a href="#">Home</a><a href="#">Prompts</a><a href="#" class="on">Characters</a><a href="#">About</a><a href="#">Blog</a><a href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>CHARACTERS</h1>
+  <p>Mythic period pieces, modern psychological dramas — every card an engineered experience.</p>
+</section>
+
+<main>
+  <details class="notice">
+    <summary>Read before you download</summary>
+    <div>
+      <p>Every character below is hyperfocused on one experience — the blurb tells you exactly what you're signing up for, so trust it. Most are written and tested against my preset; some ship with a customised version baked into their prompt override. The Author's Notes on each card tell you which setup applies.</p>
+      <p>Download the card and any related QR sets, import everything into SillyTavern, read the creator notes. Then go.</p>
+    </div>
+  </details>
+
+  <div class="toolbar">
+    <input class="search" id="q" type="search" placeholder="Search characters" aria-label="Search characters">
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</main>
+
+<dialog id="dlg" aria-labelledby="d-name">
+  <div class="modal">
+    <div class="art" id="d-art"></div>
+    <div class="content">
+      <header>
+        <button class="close" id="d-close" aria-label="Close">×</button>
+        <h2 id="d-name"></h2>
+        <p class="tagline" id="d-tag"></p>
+      </header>
+      <div class="tags" id="d-tags"></div>
+      <div class="tabs" id="d-tabs" role="tablist"></div>
+      <div class="pane" id="d-pane"></div>
+      <div class="actions" id="d-actions"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+// One entry per character. Later this moves to its own file so adding a card
+// means adding an entry here plus the PNG, nothing else.
+const CHARACTERS = [
+  {
+    name: "Zmey",
+    tagline: "He has chosen a bride. That would be you.",
+    era: "Ottoman-era Bulgaria",
+    tags: ["Mythic", "Romance", "Slow-burn"],
+    art: "",
+    warning: "Mostly wholesome! Light CW: occasionally folk-horror undercurrent and a very trippy psychedelic eros layer if you go there. Otherwise this is a love story.",
+    about: [
+      "In Bulgarian folklore the zmey (змей) isn't a western dragon — no hoarding, no conquest. He's a storm sovereign, a guardian spirit, the стопанин of the land — something between a cosmic force and a deeply domestic presence. He keeps the boundaries, fights the things that would unmake the valley, and falls in love with mortal women. This is a romance bot. That's the whole point. He's ancient, not human, and his sense of scale is genuinely off — he'll bring the same absolute seriousness to a missing bouquet as to a territorial war with a rival zmey. He's warm, jealous, petty, funny, endlessly curious about the texture of your mortal life. His emotions are literally the weather: joy is lightning without thunder, jealousy is hail, longing is morning mist. When his mood turns, the sky turns with it."
+    ],
+    vibe: [
+      "Ottoman-era Bulgaria, mountain air, village custom, the land remembering things. Slow-burn by design — you won't get a supernatural fireworks display on day one, and that restraint is the texture. When the shift comes, it's earned. How courtship works is the clever part — it runs on real folk ritual. You earn his gaze by crossing liminal thresholds (out too long in a thunderstorm, drawing water after dusk, bareheaded in the lightning). He notices. He won't show himself yet. First contact is easiest at the horo, the Sunday line dance, where he turns up in human form as just another bachelor. Then the mentsi at the well — if you let him drink from your vessel, you've agreed to be courted, in your culture's terms. He's not tricking you. He's speaking your language. The weight is in who's asking. A full lorebook backs it: sedenki, the dance, the thin-veil feast days, a folklore primer for the whole mythic ecosystem."
+    ],
+    downloads: [{ label: "Download card", href: "#" }]
+  },
+  {
+    name: "Gundahar",
+    tagline: "Wolf, Goth, and Wotan's bastard who doesn't know it.",
+    era: "385 CE · Danube frontier",
+    tags: ["Mythic", "Historical", "Dark"],
+    art: "",
+    warning: "Please read the content warning within the card before you play.",
+    about: [
+      "You are Bendis, Thracian goddess of marriage, the hunt, the moon, and sacred dissolution. Your last tribe still howls your name, and tomorrow the Goths descend on them. You want to fight at their side — but a goddess on the battlefield means a divine war. So Wotan (Germanic proto-Odin) named his price: bind your power, walk among them as a woman, and keep his bastard son alive and ignorant of what he is. You think it's a leash. You think it's a price you chose. It isn't. Wotan has played you both — and what he's truly building, and what's truly rising in the world to be fought, runs far deeper and older than either of you can see. Gundahar is restraint incarnate; you are everything that comes undone. Mythic, fated, decided before either of you drew breath — the kind of love that burns down everything around it. He needs you to crack his son open, and you've walked straight in, pride intact, certain you're the one defying a god. The chat opens mid-battle: his warband descends on your tribe, he overpowers you, takes the feather that holds your strength, and takes you prisoner. Everything after is yours."
+    ],
+    vibe: [
+      "385 CE, Goths raiding south of the Danube, the old gods dying out by bone memory and spite. Liminal, mythic, brutal, sensual. Built for the long haul — a 20-entry lorebook covers Gothic marriage law, warfare, fate, sacred custom, …"
+    ],
+    downloads: [{ label: "Download card", href: "#" }, { label: "QR set", href: "#" }]
+  },
+  // Placeholders so the grid shows how a fuller catalogue looks. Remove for real use.
+  ...["Sample I", "Sample II", "Sample III", "Sample IV", "Sample V", "Sample VI"].map((n, i) => ({
+    name: n, tagline: "Placeholder tile showing layout density.", era: i % 2 ? "Modern" : "Mythic",
+    tags: [i % 2 ? "Modern" : "Mythic", i % 3 ? "Drama" : "Romance"], art: "",
+    warning: "—", about: ["Placeholder."], vibe: ["Placeholder."], downloads: [{ label: "Download card", href: "#" }]
+  }))
+];
+
+const grid = document.getElementById("grid");
+const q = document.getElementById("q");
+const chipsEl = document.getElementById("chips");
+let activeTag = "All";
+
+const allTags = ["All", ...new Set(CHARACTERS.flatMap(c => c.tags))];
+chipsEl.innerHTML = allTags.map(t => `<button class="chip${t === "All" ? " on" : ""}" data-tag="${t}">${t}</button>`).join("");
+chipsEl.addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  activeTag = b.dataset.tag;
+  chipsEl.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c === b));
+  render();
+});
+q.addEventListener("input", render);
+
+function artStyle(c) {
+  return c.art
+    ? `style="background-image:url('${c.art}')"`
+    : `style="background:radial-gradient(circle at 50% 35%, #2a2418, #0d0b08 75%)"`;
+}
+
+function render() {
+  const term = q.value.trim().toLowerCase();
+  const list = CHARACTERS.filter(c =>
+    (activeTag === "All" || c.tags.includes(activeTag)) &&
+    (!term || [c.name, c.tagline, c.era, ...c.tags, ...c.about, ...c.vibe].join(" ").toLowerCase().includes(term))
+  );
+  grid.innerHTML = list.length ? list.map(c => `
+    <button class="tile" data-name="${c.name}">
+      <div class="art" ${artStyle(c)}>${c.art ? "" : c.name[0]}</div>
+      <div class="body">
+        <h3>${c.name}</h3>
+        <p>${c.tagline}</p>
+        <div class="era">${c.era}</div>
+      </div>
+    </button>`).join("") : `<div class="empty">No characters match.</div>`;
+}
+grid.addEventListener("click", e => {
+  const t = e.target.closest(".tile"); if (t) open(CHARACTERS.find(c => c.name === t.dataset.name));
+});
+
+const dlg = document.getElementById("dlg");
+document.getElementById("d-close").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+function open(c) {
+  const art = document.getElementById("d-art");
+  art.setAttribute("style", artStyle(c).slice(7, -1));
+  art.textContent = c.art ? "" : c.name[0];
+  document.getElementById("d-name").textContent = c.name;
+  document.getElementById("d-tag").textContent = c.tagline;
+  document.getElementById("d-tags").innerHTML = [c.era, ...c.tags].map(t => `<span>${t}</span>`).join("");
+  const panes = { "The story": c.about, "The vibe": c.vibe, "Content warning": [c.warning] };
+  const tabs = document.getElementById("d-tabs");
+  const pane = document.getElementById("d-pane");
+  tabs.innerHTML = Object.keys(panes).map((k, i) => `<button role="tab" class="${i ? "" : "on"}">${k}</button>`).join("");
+  const show = k => { pane.innerHTML = panes[k].map(p => `<p>${p}</p>`).join(""); pane.scrollTop = 0; };
+  tabs.onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    tabs.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b));
+    show(b.textContent);
+  };
+  show("The story");
+  document.getElementById("d-actions").innerHTML = c.downloads
+    .map((d, i) => `<a class="btn ${i ? "ghost" : "primary"}" href="${d.href}" download>${d.label}</a>`).join("");
+  dlg.showModal();
+}
+
+render();
+</script>
+</body>
+</html>
