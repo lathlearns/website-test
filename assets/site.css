@@ -15,6 +15,7 @@
   --nav: "Montserrat", system-ui, sans-serif;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); }
 body { min-height: 100vh; display: flex; flex-direction: column; line-height: 1.7; }
 main { flex: 1; }
@@ -93,6 +94,12 @@ dialog::backdrop { background: rgba(0, 0, 0, .8); }
 .content .tags { padding: 0 24px 12px; }
 .close { position: absolute; top: 14px; right: 14px; background: none; border: 0; color: var(--muted); font-size: 28px; cursor: pointer; line-height: 1; padding: 4px 8px; }
 .close:hover { color: var(--text); }
+.persona { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 24px 14px; padding: 10px 12px; border: 1px solid var(--line); background: var(--panel-2); }
+.persona .pic { width: 56px; height: 56px; flex: none; background: center 20% / cover no-repeat; border: 1px solid var(--line); }
+.persona .who { flex: 1 1 200px; min-width: 0; font-size: 13px; line-height: 1.5; }
+.persona .label { font-family: var(--nav); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dim); }
+.persona .name { font-family: var(--head); letter-spacing: .08em; text-transform: uppercase; font-size: 14px; }
+.persona .btn { flex: none; padding: 8px 12px; font-size: 11px; }
 .tabs { display: flex; flex-wrap: wrap; gap: 0 22px; border-bottom: 1px solid var(--line); padding: 0 24px; }
 .tabs button { flex: none; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); padding: 10px 0; cursor: pointer; font-family: var(--nav); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
 .tabs button:hover { color: var(--text); }

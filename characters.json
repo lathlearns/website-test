@@ -107,6 +107,11 @@
     "name": "Gundahar",
     "art": "assets/img/characters/gundahar.jpg",
     "tagline": "Wolf, Goth, and Wotan's bastard who doesn't know it.",
+    "persona": {
+      "card": "cards/bendis.png",
+      "art": "assets/img/characters/bendis.jpg",
+      "text": "You are Bendis, Thracian goddess of marriage, the hunt, the moon, and sacred dissolution."
+    },
     "warning": "Please read the content warning within the card before you play.",
     "sections": [
       {

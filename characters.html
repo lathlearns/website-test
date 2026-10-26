@@ -66,8 +66,23 @@ async function load() {
       const k = tagKey(t);
       if (k && !tags.has(k)) tags.set(k, tagLabel(t));
     }
+    // A persona the user plays: its card supplies the name and is the download.
+    let persona = null;
+    if (e.persona) {
+      let pc = null;
+      if (e.persona.card && !e.persona.name) {
+        try { pc = await readCard(e.persona.card); } catch (err) { console.warn("Could not read card", e.persona.card, err); }
+      }
+      persona = {
+        name: e.persona.name || pc?.name || "Persona",
+        art: e.persona.art || e.persona.card || "",
+        text: e.persona.text || "",
+        file: e.persona.file || e.persona.card || ""
+      };
+    }
     const sections = e.sections || [];
     return {
+      persona,
       name: e.name || card?.name || "Untitled",
       tagline: e.tagline || "",
       art: e.art || e.card || "",

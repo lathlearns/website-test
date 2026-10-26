@@ -105,6 +105,7 @@ function detail(item) {
               <p class="tagline"></p>
             </div>
             <div class="tags"></div>
+            <div class="persona"></div>
             <div class="tabs" role="tablist"></div>
             <div class="pane"></div>
             <div class="actions"></div>
@@ -123,6 +124,20 @@ function detail(item) {
   $(".tagline").hidden = !item.tagline;
   $(".tags").innerHTML = (item.tags || []).map(t => `<span>${esc(t)}</span>`).join("");
   $(".tags").hidden = !(item.tags || []).length;
+
+  // The persona the user plays alongside this character, if it comes with one.
+  const p = item.persona;
+  $(".persona").hidden = !p;
+  if (p) {
+    $(".persona").innerHTML = `
+      ${p.art ? `<a class="pic" href="${esc(p.art)}" target="_blank" rel="noopener" style="background-image:url('${esc(p.art)}')" aria-label="Full portrait of ${esc(p.name)}"></a>` : ""}
+      <div class="who">
+        <div class="label">You play</div>
+        <div class="name">${esc(p.name)}</div>
+        ${p.text ? `<div>${inline(p.text)}</div>` : ""}
+      </div>
+      ${p.file ? `<a class="btn" href="${esc(p.file)}" download>Download persona</a>` : ""}`;
+  }
 
   const tabs = $(".tabs"), pane = $(".pane");
   tabs.innerHTML = item.tabs.map((t, i) =>

@@ -42,6 +42,24 @@ JavaScript with no build step, so it can be hosted anywhere that serves files
   the card's), `"warningLabel"` (e.g. `"Graphic content warning"`).
 - Without a `"card"`, the entry still works. It just has no tags.
 
+### Characters that come with a persona
+
+If the user is meant to play a set persona (like Bendis with Gundahar), add a
+`persona` to the character's entry. The pop-up then shows a "You play" box with
+the persona's picture, name, a line about them and a "Download persona" button:
+
+```json
+"persona": {
+  "card": "cards/bendis.png",
+  "art": "assets/img/characters/bendis.jpg",
+  "text": "You are Bendis, Thracian goddess of marriage, the hunt, the moon, and sacred dissolution."
+}
+```
+
+The name comes from the persona's card (or set `"name"` yourself), and the
+download is the card itself, which SillyTavern can convert into a persona.
+Use `"file"` to offer a different download instead.
+
 Text formatting inside the JSON: `**bold**`, `*italic*`, `` `code` ``,
 `[link text](https://…)`. A paragraph starting `- ` becomes a bullet point and
 one starting `1. ` a numbered step (consecutive ones join into one list).
