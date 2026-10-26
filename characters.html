@@ -147,54 +147,77 @@
 </dialog>
 
 <script>
-// One entry per character. Later this moves to its own file so adding a card
-// means adding an entry here plus the PNG, nothing else.
-const CHARACTERS = [
-  {
-    name: "Zmey",
-    tagline: "He has chosen a bride. That would be you.",
-    era: "Ottoman-era Bulgaria",
-    tags: ["Mythic", "Romance", "Slow-burn"],
-    art: "",
-    warning: "Mostly wholesome! Light CW: occasionally folk-horror undercurrent and a very trippy psychedelic eros layer if you go there. Otherwise this is a love story.",
-    about: [
-      "In Bulgarian folklore the zmey (змей) isn't a western dragon — no hoarding, no conquest. He's a storm sovereign, a guardian spirit, the стопанин of the land — something between a cosmic force and a deeply domestic presence. He keeps the boundaries, fights the things that would unmake the valley, and falls in love with mortal women. This is a romance bot. That's the whole point. He's ancient, not human, and his sense of scale is genuinely off — he'll bring the same absolute seriousness to a missing bouquet as to a territorial war with a rival zmey. He's warm, jealous, petty, funny, endlessly curious about the texture of your mortal life. His emotions are literally the weather: joy is lightning without thunder, jealousy is hail, longing is morning mist. When his mood turns, the sky turns with it."
-    ],
-    vibe: [
-      "Ottoman-era Bulgaria, mountain air, village custom, the land remembering things. Slow-burn by design — you won't get a supernatural fireworks display on day one, and that restraint is the texture. When the shift comes, it's earned. How courtship works is the clever part — it runs on real folk ritual. You earn his gaze by crossing liminal thresholds (out too long in a thunderstorm, drawing water after dusk, bareheaded in the lightning). He notices. He won't show himself yet. First contact is easiest at the horo, the Sunday line dance, where he turns up in human form as just another bachelor. Then the mentsi at the well — if you let him drink from your vessel, you've agreed to be courted, in your culture's terms. He's not tricking you. He's speaking your language. The weight is in who's asking. A full lorebook backs it: sedenki, the dance, the thin-veil feast days, a folklore primer for the whole mythic ecosystem."
-    ],
-    downloads: [{ label: "Download card", href: "#" }]
-  },
-  {
-    name: "Gundahar",
-    tagline: "Wolf, Goth, and Wotan's bastard who doesn't know it.",
-    era: "385 CE · Danube frontier",
-    tags: ["Mythic", "Historical", "Dark"],
-    art: "",
-    warning: "Please read the content warning within the card before you play.",
-    about: [
-      "You are Bendis, Thracian goddess of marriage, the hunt, the moon, and sacred dissolution. Your last tribe still howls your name, and tomorrow the Goths descend on them. You want to fight at their side — but a goddess on the battlefield means a divine war. So Wotan (Germanic proto-Odin) named his price: bind your power, walk among them as a woman, and keep his bastard son alive and ignorant of what he is. You think it's a leash. You think it's a price you chose. It isn't. Wotan has played you both — and what he's truly building, and what's truly rising in the world to be fought, runs far deeper and older than either of you can see. Gundahar is restraint incarnate; you are everything that comes undone. Mythic, fated, decided before either of you drew breath — the kind of love that burns down everything around it. He needs you to crack his son open, and you've walked straight in, pride intact, certain you're the one defying a god. The chat opens mid-battle: his warband descends on your tribe, he overpowers you, takes the feather that holds your strength, and takes you prisoner. Everything after is yours."
-    ],
-    vibe: [
-      "385 CE, Goths raiding south of the Danube, the old gods dying out by bone memory and spite. Liminal, mythic, brutal, sensual. Built for the long haul — a 20-entry lorebook covers Gothic marriage law, warfare, fate, sacred custom, …"
-    ],
-    downloads: [{ label: "Download card", href: "#" }, { label: "QR set", href: "#" }]
-  },
-  // Placeholders so the grid shows how a fuller catalogue looks. Remove for real use.
-  ...["Sample I", "Sample II", "Sample III", "Sample IV", "Sample V", "Sample VI"].map((n, i) => ({
-    name: n, tagline: "Placeholder tile showing layout density.", era: i % 2 ? "Modern" : "Mythic",
-    tags: [i % 2 ? "Modern" : "Mythic", i % 3 ? "Drama" : "Romance"], art: "",
-    warning: "—", about: ["Placeholder."], vibe: ["Placeholder."], downloads: [{ label: "Download card", href: "#" }]
-  }))
-];
+// Characters live in characters.json. An entry with a "card" PNG gets its
+// name, tags and art from the card itself; anything written in the entry
+// adds to (tags) or overrides (everything else) what the card says.
+let CHARACTERS = [];
+let TAGS = [];
 
 const grid = document.getElementById("grid");
 const q = document.getElementById("q");
 const chipsEl = document.getElementById("chips");
-let activeTag = "All";
+let activeTag = "all";
 
-const allTags = ["All", ...new Set(CHARACTERS.flatMap(c => c.tags))];
-chipsEl.innerHTML = allTags.map(t => `<button class="chip${t === "All" ? " on" : ""}" data-tag="${t}">${t}</button>`).join("");
+const esc = s => String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+
+// Tags match regardless of capitals or stray spaces: "romance", "Romance " and
+// "ROMANCE" are one tag, shown with a capital first letter.
+const tagKey = t => String(t).trim().replace(/\s+/g, " ").toLowerCase();
+const tagLabel = k => k.charAt(0).toUpperCase() + k.slice(1);
+
+// Read the character data SillyTavern embeds in a card PNG ("ccv3" or "chara"
+// text chunk holding base64 JSON). Returns null if there is none.
+async function readCard(url) {
+  const buf = new Uint8Array(await (await fetch(url)).arrayBuffer());
+  const view = new DataView(buf.buffer);
+  const latin1 = new TextDecoder("latin1");
+  const found = {};
+  for (let pos = 8; pos + 8 <= buf.length;) {
+    const len = view.getUint32(pos);
+    const type = latin1.decode(buf.subarray(pos + 4, pos + 8));
+    const data = buf.subarray(pos + 8, pos + 8 + len);
+    if (type === "tEXt") {
+      const nul = data.indexOf(0);
+      found[latin1.decode(data.subarray(0, nul))] = latin1.decode(data.subarray(nul + 1));
+    }
+    if (type === "IEND") break;
+    pos += 12 + len;
+  }
+  const raw = found.ccv3 || found.chara;
+  if (!raw) return null;
+  const json = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(raw), ch => ch.charCodeAt(0))));
+  return json.data || json;
+}
+
+async function load() {
+  const entries = await (await fetch("characters.json")).json();
+  CHARACTERS = await Promise.all(entries.map(async e => {
+    let card = null;
+    if (e.card) {
+      try { card = await readCard(e.card); } catch (err) { console.warn("Could not read card", e.card, err); }
+    }
+    const keys = [...new Set([...(card?.tags || []), ...(e.tags || [])].map(tagKey).filter(Boolean))];
+    const downloads = [];
+    if (e.card) downloads.push({ label: "Download card", file: e.card });
+    for (const x of e.extras || []) downloads.push(x);
+    return {
+      name: e.name || card?.name || "Untitled",
+      tagline: e.tagline || "",
+      era: e.era || "",
+      art: e.art || e.card || "",
+      tags: keys,
+      warning: e.warning || "",
+      story: e.story || [],
+      vibe: e.vibe || [],
+      downloads
+    };
+  }));
+  TAGS = [...new Set(CHARACTERS.flatMap(c => c.tags))].sort();
+  chipsEl.innerHTML = ["all", ...TAGS].map(k =>
+    `<button class="chip${k === "all" ? " on" : ""}" data-tag="${esc(k)}">${esc(tagLabel(k))}</button>`).join("");
+  render();
+}
+
 chipsEl.addEventListener("click", e => {
   const b = e.target.closest(".chip"); if (!b) return;
   activeTag = b.dataset.tag;
@@ -205,28 +228,28 @@ q.addEventListener("input", render);
 
 function artStyle(c) {
   return c.art
-    ? `style="background-image:url('${c.art}')"`
-    : `style="background:radial-gradient(circle at 50% 35%, #2a2418, #0d0b08 75%)"`;
+    ? `background-image:url('${encodeURI(c.art)}')`
+    : `background:radial-gradient(circle at 50% 35%, #2a2418, #0d0b08 75%)`;
 }
 
 function render() {
   const term = q.value.trim().toLowerCase();
   const list = CHARACTERS.filter(c =>
-    (activeTag === "All" || c.tags.includes(activeTag)) &&
-    (!term || [c.name, c.tagline, c.era, ...c.tags, ...c.about, ...c.vibe].join(" ").toLowerCase().includes(term))
+    (activeTag === "all" || c.tags.includes(activeTag)) &&
+    (!term || [c.name, c.tagline, c.era, ...c.tags, ...c.story, ...c.vibe].join(" ").toLowerCase().includes(term))
   );
   grid.innerHTML = list.length ? list.map(c => `
-    <button class="tile" data-name="${c.name}">
-      <div class="art" ${artStyle(c)}>${c.art ? "" : c.name[0]}</div>
+    <button class="tile" data-i="${CHARACTERS.indexOf(c)}">
+      <div class="art" style="${artStyle(c)}">${c.art ? "" : esc(c.name[0])}</div>
       <div class="body">
-        <h3>${c.name}</h3>
-        <p>${c.tagline}</p>
-        <div class="era">${c.era}</div>
+        <h3>${esc(c.name)}</h3>
+        <p>${esc(c.tagline)}</p>
+        <div class="era">${esc(c.era)}</div>
       </div>
     </button>`).join("") : `<div class="empty">No characters match.</div>`;
 }
 grid.addEventListener("click", e => {
-  const t = e.target.closest(".tile"); if (t) open(CHARACTERS.find(c => c.name === t.dataset.name));
+  const t = e.target.closest(".tile"); if (t) open(CHARACTERS[t.dataset.i]);
 });
 
 const dlg = document.getElementById("dlg");
@@ -235,16 +258,16 @@ dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 
 function open(c) {
   const art = document.getElementById("d-art");
-  art.setAttribute("style", artStyle(c).slice(7, -1));
+  art.setAttribute("style", artStyle(c));
   art.textContent = c.art ? "" : c.name[0];
   document.getElementById("d-name").textContent = c.name;
   document.getElementById("d-tag").textContent = c.tagline;
-  document.getElementById("d-tags").innerHTML = [c.era, ...c.tags].map(t => `<span>${t}</span>`).join("");
-  const panes = { "The story": c.about, "The vibe": c.vibe, "Content warning": [c.warning] };
+  document.getElementById("d-tags").innerHTML = [c.era, ...c.tags.map(tagLabel)].filter(Boolean).map(t => `<span>${esc(t)}</span>`).join("");
+  const panes = { "The story": c.story, "The vibe": c.vibe, "Content warning": [c.warning] };
   const tabs = document.getElementById("d-tabs");
   const pane = document.getElementById("d-pane");
   tabs.innerHTML = Object.keys(panes).map((k, i) => `<button role="tab" class="${i ? "" : "on"}">${k}</button>`).join("");
-  const show = k => { pane.innerHTML = panes[k].map(p => `<p>${p}</p>`).join(""); pane.scrollTop = 0; };
+  const show = k => { pane.innerHTML = panes[k].map(p => `<p>${esc(p)}</p>`).join(""); pane.scrollTop = 0; };
   tabs.onclick = e => {
     const b = e.target.closest("button"); if (!b) return;
     tabs.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b));
@@ -252,11 +275,14 @@ function open(c) {
   };
   show("The story");
   document.getElementById("d-actions").innerHTML = c.downloads
-    .map((d, i) => `<a class="btn ${i ? "ghost" : "primary"}" href="${d.href}" download>${d.label}</a>`).join("");
+    .map((d, i) => `<a class="btn ${i ? "ghost" : "primary"}" href="${encodeURI(d.file)}" download>${esc(d.label)}</a>`).join("");
   dlg.showModal();
 }
 
-render();
+load().catch(err => {
+  console.error(err);
+  grid.innerHTML = `<div class="empty">Couldn't load the character list.</div>`;
+});
 </script>
 </body>
 </html>

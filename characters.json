@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Zmey",
+    "tagline": "He has chosen a bride. That would be you.",
+    "era": "Ottoman-era Bulgaria",
+    "tags": ["Mythic", "Romance", "Slow-burn"],
+    "warning": "Mostly wholesome! Light CW: occasionally folk-horror undercurrent and a very trippy psychedelic eros layer if you go there. Otherwise this is a love story.",
+    "story": [
+      "In Bulgarian folklore the zmey (змей) isn't a western dragon — no hoarding, no conquest. He's a storm sovereign, a guardian spirit, the стопанин of the land — something between a cosmic force and a deeply domestic presence. He keeps the boundaries, fights the things that would unmake the valley, and falls in love with mortal women. This is a romance bot. That's the whole point. He's ancient, not human, and his sense of scale is genuinely off — he'll bring the same absolute seriousness to a missing bouquet as to a territorial war with a rival zmey. He's warm, jealous, petty, funny, endlessly curious about the texture of your mortal life. His emotions are literally the weather: joy is lightning without thunder, jealousy is hail, longing is morning mist. When his mood turns, the sky turns with it."
+    ],
+    "vibe": [
+      "Ottoman-era Bulgaria, mountain air, village custom, the land remembering things. Slow-burn by design — you won't get a supernatural fireworks display on day one, and that restraint is the texture. When the shift comes, it's earned. How courtship works is the clever part — it runs on real folk ritual. You earn his gaze by crossing liminal thresholds (out too long in a thunderstorm, drawing water after dusk, bareheaded in the lightning). He notices. He won't show himself yet. First contact is easiest at the horo, the Sunday line dance, where he turns up in human form as just another bachelor. Then the mentsi at the well — if you let him drink from your vessel, you've agreed to be courted, in your culture's terms. He's not tricking you. He's speaking your language. The weight is in who's asking. A full lorebook backs it: sedenki, the dance, the thin-veil feast days, a folklore primer for the whole mythic ecosystem."
+    ]
+  },
+  {
+    "name": "Gundahar",
+    "tagline": "Wolf, Goth, and Wotan's bastard who doesn't know it.",
+    "era": "385 CE · Danube frontier",
+    "tags": ["Mythic", "Historical", "Dark"],
+    "warning": "Please read the content warning within the card before you play.",
+    "story": [
+      "You are Bendis, Thracian goddess of marriage, the hunt, the moon, and sacred dissolution. Your last tribe still howls your name, and tomorrow the Goths descend on them. You want to fight at their side — but a goddess on the battlefield means a divine war. So Wotan (Germanic proto-Odin) named his price: bind your power, walk among them as a woman, and keep his bastard son alive and ignorant of what he is. You think it's a leash. You think it's a price you chose. It isn't. Wotan has played you both — and what he's truly building, and what's truly rising in the world to be fought, runs far deeper and older than either of you can see. Gundahar is restraint incarnate; you are everything that comes undone. Mythic, fated, decided before either of you drew breath — the kind of love that burns down everything around it. He needs you to crack his son open, and you've walked straight in, pride intact, certain you're the one defying a god. The chat opens mid-battle: his warband descends on your tribe, he overpowers you, takes the feather that holds your strength, and takes you prisoner. Everything after is yours."
+    ],
+    "vibe": [
+      "385 CE, Goths raiding south of the Danube, the old gods dying out by bone memory and spite. Liminal, mythic, brutal, sensual. Built for the long haul — a 20-entry lorebook covers Gothic marriage law, warfare, fate, sacred custom, …"
+    ],
+    "extras": [{ "label": "QR set", "file": "#" }]
+  },
+  {
+    "card": "cards/sample-1.png",
+    "tagline": "Test card. Name, tags and art come from the PNG.",
+    "era": "Test",
+    "warning": "None.",
+    "story": ["Placeholder."],
+    "vibe": ["Placeholder."]
+  },
+  {
+    "card": "cards/sample-2.png",
+    "tagline": "Test card. Name, tags and art come from the PNG.",
+    "era": "Test",
+    "warning": "None.",
+    "story": ["Placeholder."],
+    "vibe": ["Placeholder."]
+  },
+  {
+    "card": "cards/sample-3.png",
+    "tagline": "Test card. Name, tags and art come from the PNG.",
+    "era": "Test",
+    "warning": "None.",
+    "story": ["Placeholder."],
+    "vibe": ["Placeholder."]
+  }
+]
