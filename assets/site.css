@@ -26,14 +26,14 @@ h1, h2, h3 { font-family: var(--head); font-weight: 400; letter-spacing: .12em; 
 /* Header */
 .site-header { background: var(--panel); border-bottom: 1px solid var(--line); }
 .brand { display: block; text-align: center; padding: 16px 16px 10px; }
-.brand img { width: 84px; height: auto; display: inline-block; }
+.brand img { width: 96px; height: auto; display: inline-block; }
 .site-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0 32px; padding: 0 16px; border-top: 1px solid var(--line); }
 .site-nav a { font-family: var(--nav); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--text); text-decoration: none; padding: 12px 0 10px; border-bottom: 2px solid transparent; }
 .site-nav a:hover { color: var(--gold-hi); }
 .site-nav a[aria-current="page"] { border-bottom-color: var(--gold); }
 
 /* Page hero */
-.hero { text-align: center; padding: 40px 16px 30px; background: var(--bg-deep); }
+.hero { text-align: center; padding: 40px 16px 30px; background: var(--bg-deep) url("img/serpent-bg.jpg") center 58% / cover no-repeat; }
 .hero h1 { font-size: clamp(28px, 4.4vw, 44px); margin: 0 0 10px; color: #fff; }
 .hero p { font-style: italic; margin: 0 auto; max-width: 720px; }
 .hero .btn { margin-top: 24px; }
